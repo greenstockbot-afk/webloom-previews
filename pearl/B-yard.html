@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pearl Landscapes — Auckland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lime: #c6e04a;
+    --ink: #222222;
+    --muted: #5a5a5a;
+    --line: #e6e6e6;
+    --paper: #ffffff;
+    --wash: #f7f7f5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .wrap { width: min(1280px, calc(100% - 56px)); margin: 0 auto; }
+
+  /* —— WHITE NAV BAND —— */
+  .nav {
+    background: #ffffff;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    z-index: 20;
+  }
+  .nav-inner {
+    height: 78px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .brand-mark {
+    width: 8px;
+    height: 8px;
+    background: var(--lime);
+    flex-shrink: 0;
+  }
+  .brand-word { display: flex; flex-direction: column; line-height: 1; }
+  .brand-word .pearl {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-transform: lowercase;
+    color: var(--ink);
+  }
+  .brand-word .land {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: lowercase;
+    color: #4a4a4a;
+    margin-top: 3px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin-left: auto;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #4a4a4a;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+  }
+  .nav-links a:hover,
+  .nav-links a.is-on {
+    color: var(--ink);
+    border-bottom-color: #4a4a4a;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--lime);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 12px 26px;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: filter .15s ease, transform .15s ease;
+  }
+  .pill:hover { filter: brightness(0.96); transform: translateY(-1px); }
+  .nav-toggle { display: none; }
+  .burger {
+    display: none;
+    width: 28px;
+    height: 18px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .burger span { display: block; height: 2px; background: var(--ink); }
+
+  /* —— HERO —— */
+  .hero {
+    position: relative;
+    height: calc(100vh - 78px);
+    min-height: 560px;
+    overflow: hidden;
+    background: #cfd6c4;
+  }
+  .hero > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+  }
+  .hero-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.08) 38%, rgba(0,0,0,0) 58%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+  }
+  .hero-copy {
+    position: absolute;
+    left: 0;
+    top: 46%;
+    transform: translateY(-50%);
+    max-width: 620px;
+    padding: 22px 0 0 28px;
+  }
+  .hero-copy::before,
+  .hero-copy::after {
+    content: "";
+    position: absolute;
+    background: var(--lime);
+  }
+  .hero-copy::before {
+    top: 0;
+    left: 0;
+    width: 54px;
+    height: 2px;
+  }
+  .hero-copy::after {
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 54px;
+  }
+  .hero h1 {
+    color: #fff;
+    font-size: clamp(32px, 3.6vw, 52px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-shadow: 0 1px 12px rgba(0,0,0,.18);
+  }
+  .hero .whisper {
+    margin-top: 14px;
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(26px, 2.4vw, 34px);
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 8px rgba(0,0,0,.2);
+  }
+  .hero .tick {
+    display: block;
+    width: 2px;
+    height: 42px;
+    background: var(--lime);
+    margin-top: 18px;
+  }
+  .hero-cta {
+    position: absolute;
+    left: 50%;
+    bottom: 48px;
+    transform: translateX(-50%);
+    z-index: 3;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  }
+
+  /* —— PAGE —— */
+  section { background: var(--paper); }
+  .sec {
+    padding: 88px 0 40px;
+  }
+  .kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6a6a6a;
+    margin-bottom: 28px;
+  }
+
+  /* portfolio */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .tile { display: block; }
+  .tile .frame {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #ddd;
+  }
+  .tile img { transition: transform .45s ease; }
+  .tile:hover img { transform: scale(1.04); }
+  .tile figcaption {
+    margin-top: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  /* process */
+  .process {
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+    margin-top: 72px;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .step { padding-top: 8px; border-top: 2px solid var(--lime); }
+  .step b {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 14px 0 8px;
+  }
+  .step .num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: #888;
+  }
+  .step p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  /* about + services */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+  }
+  .split h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .split p { color: var(--muted); max-width: 42ch; }
+  .svc {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .svc li {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    letter-spacing: 0.02em;
+  }
+
+  /* quote */
+  .quote {
+    background: var(--wash);
+    padding: 88px 0;
+  }
+  .quote-box {
+    max-width: 560px;
+  }
+  .quote h2 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .quote .lead {
+    color: var(--muted);
+    margin-bottom: 32px;
+    font-size: 15px;
+  }
+  label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #555;
+    margin: 16px 0 6px;
+  }
+  input, textarea {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    color: var(--ink);
+    font: inherit;
+    font-size: 15px;
+    padding: 12px 14px;
+    border-radius: 2px;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #9aa83a;
+  }
+  textarea { min-height: 120px; resize: vertical; }
+  .quote .pill { margin-top: 22px; }
+
+  footer {
+    background: #fff;
+    padding: 28px 0 40px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: #7a7a7a;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 900px) {
+    .nav-inner { height: auto; min-height: 72px; flex-wrap: wrap; padding: 14px 0; }
+    .burger { display: flex; margin-left: auto; }
+    .nav-links, .nav .pill.desk { display: none; }
+    .nav-toggle:checked ~ .nav-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      margin: 8px 0 4px;
+      gap: 14px;
+    }
+    .nav-toggle:checked ~ .pill.desk { display: inline-flex; margin-left: 0; }
+    .hero { min-height: 520px; height: 78vh; }
+    .hero-copy { top: 42%; max-width: 90%; }
+    .grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .split { grid-template-columns: 1fr; gap: 48px; }
+  }
+  @media (max-width: 560px) {
+    .steps { grid-template-columns: 1fr; }
+    .svc { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+    .wrap { width: calc(100% - 36px); }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="home">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-word">
+        <span class="pearl">pearl</span>
+        <span class="land">landscapes</span>
+      </span>
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+    <label class="burger" for="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></label>
+    <ul class="nav-links">
+      <li><a class="is-on" href="#home">Home</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="pill desk" href="#contact">Get a quote</a>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=2400&q=80" alt="Bright residential pool court and patio">
+  <div class="hero-veil"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <h1>Landscape built<br>for the way you live.</h1>
+      <p class="whisper">Auckland homes, properly finished.</p>
+      <span class="tick" aria-hidden="true"></span>
+    </div>
+  </div>
+  <a class="pill hero-cta" href="#contact">Get a quote</a>
+</section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <p class="kicker">Work</p>
+    <div class="grid">
+      <figure class="tile">
+        <div class="frame"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80" alt="Takapuna pool court"></div>
+        <figcaption>Takapuna pool court</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="frame"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80" alt="Remuera timber deck"></div>
+        <figcaption>Remuera timber deck</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="frame"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80" alt="Grey Lynn courtyard"></div>
+        <figcaption>Grey Lynn courtyard</figcaption>
+      </figure>
+    </div>
+
+    <div class="process">
+      <p class="kicker">How we work</p>
+      <div class="steps">
+        <div class="step">
+          <span class="num">01</span>
+          <b>Consult</b>
+          <p>Walk the site. Measure what the ground will take, and what you want to keep.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <b>Plan</b>
+          <p>Levels, materials, and a build sequence that does not fight the house.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <b>Build</b>
+          <p>Decks, walls, concrete, plant — one crew, one site, finished in order.</p>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <b>Care</b>
+          <p>Handover with the ground packed and the surfaces ready to live on.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap split">
+    <div>
+      <p class="kicker">About</p>
+      <h2>A residential crew. Auckland only.</h2>
+      <p>Pearl Landscapes builds the hard landscape first — levels, walls, decks, concrete — then plants into ground that is actually ready. We work on houses, not masterplans. One site at a time, finished so you can walk out and use it.</p>
+    </div>
+    <div id="services">
+      <p class="kicker">Services</p>
+      <ul class="svc">
+        <li>Decking</li>
+        <li>Concrete</li>
+        <li>Fencing</li>
+        <li>Block walls</li>
+        <li>Retaining walls</li>
+        <li>Planting</li>
+        <li>Soiling</li>
+        <li>Mulching</li>
+        <li>Excavating</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="quote" id="contact">
+  <div class="wrap">
+    <div class="quote-box">
+      <p class="kicker">Quote</p>
+      <h2>Get a quote</h2>
+      <p class="lead">Tell us the suburb and what you need built. We will come back with a time to walk the site.</p>
+      <form id="quote-form">
+        <label for="name">Name</label>
+        <input id="name" name="name" autocomplete="name" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+        <label for="need">What do you need?</label>
+        <textarea id="need" name="need" required placeholder="Decking, retaining, a courtyard — whatever the job is."></textarea>
+        <button class="pill" type="submit">Get a quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Pearl Landscapes · Auckland</div>
+</footer>
+
+<script>
+  document.getElementById("quote-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+  });
+</script>
+</body>
+</html>
