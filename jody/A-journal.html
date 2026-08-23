@@ -4,189 +4,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jody Bakehouse · Grey Lynn</title>
+  <meta name="description" content="Jody Bakehouse. Pies, sandwiches, and the day's bake. Grey Lynn, Auckland.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --ink: #1a1410;
-      --ground: #ffffff;
-      --field: #f4f1ea;
-      --field-border: #1a1410;
-      --sans: "Barlow Condensed", "Arial Narrow", sans-serif;
-      --serif: "Fraunces", Georgia, serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--ground);
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; }
-    button, input, textarea { font: inherit; color: inherit; }
-    .skip {
-      position: absolute; left: 8px; top: -48px; z-index: 20;
-      background: var(--ink); color: var(--ground);
-      padding: 8px 16px; font-family: var(--sans); font-size: 16px;
-      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
-    }
-    .skip:focus { top: 8px; }
-    .nav {
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: center; min-height: 80px; padding: 20px 48px; background: var(--ground);
-    }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; }
-    .nav-links a, .wordmark, .nav-cta {
-      font-family: var(--sans); font-weight: 500; font-size: 14px;
-      letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; line-height: 1.2;
-    }
-    .nav-links a:hover, .wordmark:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .wordmark { justify-self: center; font-weight: 600; font-size: 16px; letter-spacing: 0.2em; }
-    .nav-cta { justify-self: end; font-size: 16px; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-    .nav-cta:hover { text-decoration-thickness: 2px; }
-    .hero {
-      display: grid; grid-template-columns: minmax(280px, 1fr) minmax(320px, 520px);
-      gap: 64px; align-items: center; min-height: calc(100vh - 80px);
-      padding: 32px 48px 48px; background: var(--ground);
-    }
-    .hero-copy { max-width: 440px; }
-    h1, .section h2 {
-      font-family: var(--sans); font-weight: 700; line-height: 1;
-      margin-bottom: 32px; text-transform: uppercase; color: var(--ink);
-    }
-    h1 { font-size: clamp(48px, 6.4vw, 80px); letter-spacing: -0.01em; }
-    .hero-copy p { font-size: 16px; line-height: 1.55; margin-bottom: 32px; max-width: 36ch; }
-    .text-cta {
-      font-family: var(--sans); font-weight: 500; font-size: 16px;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px;
-    }
-    .text-cta:hover { text-decoration-thickness: 2px; }
-    .hero-photo { height: calc(100vh - 160px); min-height: 480px; max-height: 760px; }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .section { padding: 96px 48px; background: var(--ground); }
-    .section h2 { font-size: clamp(36px, 4.4vw, 56px); letter-spacing: -0.01em; }
-    .wrap { max-width: 960px; }
-    .section-lead { font-size: 16px; max-width: 40ch; }
-    .plates { display: flex; flex-direction: column; gap: 48px; max-width: 960px; }
-    .plate figcaption {
-      font-family: var(--sans); font-size: 14px; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase; margin-top: 16px;
-    }
-    .plate img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
-    .cabinet-list { list-style: none; max-width: 720px; }
-    .cabinet-list li {
-      font-family: var(--sans); font-weight: 700; font-size: clamp(40px, 6vw, 72px);
-      line-height: 1; text-transform: uppercase; letter-spacing: -0.01em;
-      padding: 20px 0; border-bottom: 1px solid var(--ink);
-    }
-    .cabinet-list li:first-child { border-top: 1px solid var(--ink); }
-    form { display: flex; flex-direction: column; gap: 16px; max-width: 520px; }
-    label {
-      display: flex; flex-direction: column; gap: 8px;
-      font-family: var(--sans); font-size: 14px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-    }
-    input, textarea {
-      font-family: var(--serif); font-size: 16px; line-height: 1.4;
-      background: var(--field); border: 1px solid var(--field-border);
-      border-radius: 4px; padding: 12px 16px; width: 100%;
-    }
-    textarea { min-height: 160px; resize: vertical; }
-    input:focus, textarea:focus, button:focus-visible, a:focus-visible {
-      outline: 2px solid var(--ink); outline-offset: 2px;
-    }
-    button[type="submit"] {
-      align-self: flex-start; margin-top: 8px; font-family: var(--sans);
-      font-size: 16px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-      text-decoration: none; background: var(--ink); color: var(--ground);
-      border: 1px solid var(--ink); border-radius: 4px; padding: 12px 24px; cursor: pointer;
-    }
-    button[type="submit"]:hover { opacity: 0.88; }
-    footer {
-      padding: 32px 48px 48px; font-family: var(--sans); font-size: 14px;
-      font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-    }
-    @media (max-width: 1100px) { .hero { grid-template-columns: 1fr 1fr; gap: 40px; } }
-    @media (max-width: 880px) {
-      .nav { grid-template-columns: 1fr auto; padding: 16px 24px; min-height: 0; row-gap: 12px; }
-      .nav-links { grid-column: 1 / -1; order: 3; }
-      .wordmark { justify-self: start; }
-      .hero { grid-template-columns: 1fr; gap: 32px; min-height: 0; padding: 24px 24px 48px; }
-      .hero-photo { height: auto; min-height: 0; max-height: none; aspect-ratio: 3 / 4; }
-      .section { padding: 64px 24px; }
-      footer { padding: 24px 24px 40px; }
-    }
+    :root { --paper:#ffffff; --ink:#141414; --display:"Barlow Condensed","Arial Narrow",sans-serif; --serif:"Newsreader","Times New Roman",serif; --content:1280px; --gutter:48px; --hair:1px solid var(--ink); }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1rem;line-height:1.5}
+    img{display:block;max-width:100%}
+    a{color:inherit}
+    button,input,textarea{font:inherit;color:inherit}
+    :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+    .skip{position:absolute;left:8px;top:-48px;z-index:20;background:var(--ink);color:var(--paper);padding:8px 16px;font-family:var(--display);font-size:1rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+    .skip:focus{top:8px}
+    .wrap{width:100%;max-width:var(--content);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+    .banner{border-bottom:var(--hair);padding:8px 0;text-align:center}
+    .banner p{font-family:var(--display);font-size:.875rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+    .masthead-band{border-bottom:var(--hair);padding:16px 0 12px}
+    .masthead{display:block;text-align:center;text-decoration:none;font-family:var(--display);font-weight:700;font-size:clamp(2.75rem,7vw,4.5rem);line-height:1;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+    .nav-band{border-bottom:var(--hair)}
+    .nav-band .wrap{display:flex;align-items:center;justify-content:center;min-height:48px}
+    .nav-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 32px;list-style:none}
+    .nav-links a{font-family:var(--display);font-size:1rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:12px 0}
+    .hero{padding:32px 0 40px}
+    .hero-head{max-width:42rem;margin-bottom:32px}
+    h1,h2{font-family:var(--display);font-weight:700;line-height:1;letter-spacing:.04em;text-transform:uppercase;margin-bottom:32px}
+    h1{font-size:clamp(2.25rem,4.4vw,3rem)}
+    h2{font-size:clamp(2rem,3.6vw,2.5rem)}
+    .lede{font-size:1.125rem;max-width:46ch;margin-bottom:16px}
+    .text-cta{font-family:var(--display);font-size:1rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:underline;text-underline-offset:5px}
+    .plates{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 32px;border-top:var(--hair);padding-top:24px}
+    .plate img{width:100%;height:220px;object-fit:cover;border:1px solid var(--ink)}
+    .plate h4{font-family:var(--display);font-size:1.125rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:12px}
+    .plate p{font-size:1rem;margin-top:4px}
+    .folio{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:32px;padding-top:12px;border-top:var(--hair);font-family:var(--display);font-size:.875rem;letter-spacing:.14em;text-transform:uppercase}
+    .band{padding:48px 0;border-top:var(--hair)}
+    .band .lede{margin-bottom:32px}
+    form{display:flex;flex-direction:column;gap:16px;max-width:32rem}
+    label{display:flex;flex-direction:column;gap:8px;font-family:var(--display);font-size:1rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+    input,textarea{font-family:var(--serif);font-size:1rem;background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:12px 16px;width:100%}
+    textarea{min-height:160px;resize:vertical}
+    button[type=submit]{align-self:flex-start;font-family:var(--display);font-size:1rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:12px 24px;cursor:pointer;text-decoration:none}
+    footer{border-top:var(--hair);padding:24px 0 40px}
+    footer p{font-family:var(--display);font-size:.875rem;letter-spacing:.14em;text-transform:uppercase}
+    @media(max-width:900px){:root{--gutter:24px}.plates{grid-template-columns:1fr}.plate img{height:200px}}
   </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="banner"><div class="wrap"><p>pies · sandwiches · the day's bake · Grey Lynn</p></div></div>
   <header>
-    <nav class="nav" aria-label="Primary">
-      <ul class="nav-links">
-        <li><a href="#top">Home</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#cabinet">The cabinet</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a class="wordmark" href="#top" id="top">Jody / Bakehouse</a>
-      <a class="nav-cta" href="#contact">Get in touch</a>
-    </nav>
+    <div class="masthead-band"><div class="wrap"><a class="masthead" href="#top" id="top">Jody Bakehouse</a></div></div>
+    <nav class="nav-band" aria-label="Shop"><div class="wrap"><ul class="nav-links">
+      <li><a href="#order">Order</a></li><li><a href="#cabinet">The cabinet</a></li><li><a href="#visit">Grey Lynn</a></li><li><a href="#catering">Catering</a></li>
+    </ul></div></nav>
   </header>
   <main id="main">
-    <section class="hero" aria-label="Introduction">
-      <div class="hero-copy">
-        <h1>Pies, sandwiches,<br>Grey Lynn</h1>
-        <p>A neighbourhood bakehouse in Grey Lynn, Auckland. Pies, sandwiches, and bread — from the cabinet, for the street.</p>
-        <a class="text-cta" href="#contact">Get in touch</a>
+    <section class="hero" aria-label="Today's bake"><div class="wrap">
+      <div class="hero-head">
+        <h1>Today's bake</h1>
+        <p class="lede">A bakehouse in Grey Lynn, Auckland. The cabinet is pies, sandwiches, and the morning's bread — come in for what is on.</p>
+        <a class="text-cta" href="#visit">Find the shop</a>
       </div>
-      <figure class="hero-photo">
-        <img src="https://images.unsplash.com/photo-1760822601183-4a75e9389f59?auto=format&fit=crop&w=2400&q=80" alt="Freshly baked bread loaves" width="1200" height="1600">
-      </figure>
-    </section>
-    <section class="section" id="gallery">
-      <h2>Gallery</h2>
-      <div class="plates">
-        <figure class="plate">
-          <img src="https://images.unsplash.com/photo-1777315387661-42a289edccba?auto=format&fit=crop&w=1600&q=80" alt="Golden bakery pies" width="1600" height="1067">
-          <figcaption>Pies</figcaption>
-        </figure>
-        <figure class="plate">
-          <img src="https://images.unsplash.com/photo-1775210603688-6355e3aabc87?auto=format&fit=crop&w=1600&q=80" alt="Sandwiches on the cabinet" width="1600" height="1067">
-          <figcaption>Sandwiches</figcaption>
-        </figure>
+      <div class="plates" id="cabinet">
+        <figure class="plate"><img src="https://images.unsplash.com/photo-1777315387661-42a289edccba?auto=format&fit=crop&w=900&q=80" alt="Golden pies in a bakery cabinet" width="900" height="600"><figcaption><h4>Pies</h4><p>From the case.</p></figcaption></figure>
+        <figure class="plate"><img src="https://images.unsplash.com/photo-1775210603688-6355e3aabc87?auto=format&fit=crop&w=900&q=80" alt="Sandwiches stacked on the counter" width="900" height="600"><figcaption><h4>Sandwiches</h4><p>On the day's bread.</p></figcaption></figure>
+        <figure class="plate"><img src="https://images.unsplash.com/photo-1760822601183-4a75e9389f59?auto=format&fit=crop&w=900&q=80" alt="Loaves from the morning bake" width="900" height="600"><figcaption><h4>The bake</h4><p>Loaves from the oven.</p></figcaption></figure>
       </div>
-    </section>
-    <section class="section" id="about">
-      <h2>About</h2>
-      <p class="section-lead">Jody Bakehouse is a bakery in Grey Lynn, Auckland. Pies, sandwiches, and bread for the neighbourhood — made to be eaten the same day they leave the oven.</p>
-    </section>
-    <section class="section" id="cabinet">
-      <h2>The cabinet</h2>
-      <ul class="cabinet-list">
-        <li>Pies</li>
-        <li>Sandwiches</li>
-        <li>Bakery</li>
-      </ul>
-    </section>
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <form id="contact-form" action="#" method="post">
+      <p class="folio"><span>Grey Lynn, Auckland</span><span aria-hidden="true">·</span><span>Catering from the same bake</span></p>
+    </div></section>
+    <section class="band" id="order"><div class="wrap">
+      <h2>Order</h2>
+      <p class="lede">Write what you need from the cabinet — pies, sandwiches, or the day's bake.</p>
+      <form id="order-form" action="#" method="post">
         <label>Name <input type="text" name="name" autocomplete="name" required></label>
         <label>Email <input type="email" name="email" autocomplete="email" required></label>
-        <label>Message <textarea name="message" required></textarea></label>
-        <button type="submit">Send</button>
+        <label>Order <textarea name="order" required></textarea></label>
+        <button type="submit">Order</button>
       </form>
-    </section>
+    </div></section>
+    <section class="band" id="visit"><div class="wrap"><h2>Visit</h2><p>Grey Lynn, Auckland</p></div></section>
+    <section class="band" id="catering"><div class="wrap"><h2>Catering</h2><p class="lede">Catering from the same bake. Write the order above.</p></div></section>
   </main>
-  <footer>Jody Bakehouse · Grey Lynn</footer>
-  <script>document.getElementById("contact-form").addEventListener("submit", function (e) { e.preventDefault(); });</script>
+  <footer><div class="wrap"><p>Jody Bakehouse · Grey Lynn</p></div></footer>
+  <script>document.getElementById("order-form").addEventListener("submit",function(e){e.preventDefault()});</script>
 </body>
 </html>
