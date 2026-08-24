@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pearl Landscapes — Design and construct. Our crew. Auckland</title>
+  <meta name="description" content="Pearl Landscapes is a design-and-construct installer in Auckland. We design the garden, then our own crew builds it — decks, concrete, fencing, retaining, and planting.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231C1917'/%3E%3Crect x='7' y='23' width='18' height='1.5' fill='%23A16207'/%3E%3Cpath d='M8 21V14.5c0-3.2 2.6-5.5 8-5.5s8 2.3 8 5.5V21' fill='none' stroke='%23FAFAF9' stroke-width='1.4'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --field: #1C1917;
+      --secondary: #44403C;
+      --accent: #A16207;
+      --paper: #FAFAF9;
+      --fg: #0C0A09;
+      --border: #D6D3D1;
+      --type: #FAFAF9;
+      --muted: rgba(250, 250, 249, 0.62);
+      --material-role: overlay-panel;
+      --translucency: adaptive;
+      --tint: #1C1917;
+      --reduced-transparency-fallback: #1C1917;
+      --motion: 220ms ease;
+      --glass-fill: rgba(28, 25, 23, 0.48);
+      --glass-stroke: rgba(250, 250, 249, 0.14);
+      --glass-shine: rgba(250, 250, 249, 0.22);
+      --glass-blur: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: var(--paper);
+      color: var(--fg);
+    }
+
+    body {
+      font-family: Montserrat, system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ——— Fold: 1280×800 designed, dark glass ——— */
+    .fold {
+      position: relative;
+      width: 1280px;
+      max-width: 100%;
+      height: 800px;
+      margin: 0 auto;
+      background: var(--field);
+      color: var(--type);
+    }
+
+    .fold-band {
+      background: var(--field);
+      width: 100%;
+    }
+
+    .scene {
+      position: absolute;
+      inset: 18px;
+      overflow: hidden;
+      background: #2a241c;
+    }
+
+    .scene img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 62% 58%;
+      display: block;
+      filter: saturate(0.92) contrast(1.04);
+    }
+
+    .scene::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(28, 25, 23, 0.58) 0%, rgba(28, 25, 23, 0.22) 38%, rgba(28, 25, 23, 0.08) 62%, rgba(28, 25, 23, 0.28) 100%),
+        linear-gradient(180deg, rgba(28, 25, 23, 0.28) 0%, transparent 18%, transparent 62%, rgba(28, 25, 23, 0.42) 100%);
+      pointer-events: none;
+    }
+
+    .glass {
+      background: var(--glass-fill);
+      backdrop-filter: blur(var(--glass-blur)) saturate(1.15);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.15);
+      border: 1px solid var(--glass-stroke);
+      box-shadow:
+        inset 0 1px 0 var(--glass-shine),
+        0 10px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    @media (prefers-reduced-transparency: reduce) {
+      .glass {
+        background: var(--reduced-transparency-fallback);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+    }
+
+    header {
+      position: absolute;
+      z-index: 3;
+      top: 36px;
+      left: 40px;
+      right: 40px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      gap: 20px;
+    }
+
+    .mark {
+      font-family: Cormorant, Georgia, serif;
+      font-weight: 600;
+      font-size: 23px;
+      letter-spacing: 0.02em;
+      color: var(--type);
+      flex-shrink: 0;
+    }
+
+    .head-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-fold {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-fold a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color var(--motion);
+    }
+
+    .nav-fold a:hover { color: var(--type); }
+
+    .trust {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .trust b {
+      font-weight: 600;
+      color: var(--type);
+    }
+
+    .dot {
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      margin: 0 9px 2px;
+      border-radius: 50%;
+      background: var(--accent);
+      vertical-align: middle;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 16px;
+      border: 1px solid var(--accent);
+      color: var(--type);
+      font-family: Montserrat, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(161, 98, 7, 0.14);
+      transition: background var(--motion), color var(--motion);
+      cursor: pointer;
+    }
+
+    .cta:hover {
+      background: var(--accent);
+      color: var(--field);
+    }
+
+    .cta-solid {
+      background: var(--accent);
+      color: var(--field);
+    }
+
+    .cta-solid:hover {
+      background: #b8730c;
+      color: var(--field);
+    }
+
+    .plate {
+      position: absolute;
+      z-index: 3;
+      left: 40px;
+      bottom: 40px;
+      width: 456px;
+      padding: 28px 28px 26px;
+    }
+
+    .rule {
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: Cormorant, Georgia, serif;
+      font-weight: 500;
+      font-size: 44px;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--type);
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .lead {
+      margin-top: 14px;
+      max-width: 38ch;
+      color: rgba(250, 250, 249, 0.78);
+      font-size: 13.5px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .plate-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .crew {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .caption {
+      position: absolute;
+      z-index: 3;
+      right: 40px;
+      bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .caption span { color: var(--type); }
+
+    /* ——— Below the fold: paper ——— */
+    .wrap {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: Cormorant, Georgia, serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      color: var(--fg);
+    }
+
+    h3 {
+      font-family: Cormorant, Georgia, serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.2;
+      color: var(--fg);
+    }
+
+    .kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .muted {
+      color: var(--secondary);
+    }
+
+    /* Trust strip */
+    .trust-strip {
+      border-bottom: 1px solid var(--border);
+      background: var(--paper);
+    }
+
+    .trust-strip .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      min-height: 64px;
+      padding: 18px 0;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    .trust-strip .dot {
+      background: var(--accent);
+    }
+
+    /* Services */
+    .services {
+      padding: 88px 0 80px;
+      background: var(--paper);
+    }
+
+    .services .intro {
+      max-width: 46ch;
+      margin: 12px 0 40px;
+      color: var(--secondary);
+      font-size: 16px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .service {
+      background: var(--paper);
+      padding: 28px 26px 26px;
+      transition: background var(--motion);
+    }
+
+    .service:hover { background: #F5F5F4; }
+
+    .service .idx {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .service p {
+      margin-top: 8px;
+      font-size: 13.5px;
+      color: var(--secondary);
+      max-width: 32ch;
+    }
+
+    /* Story */
+    .story {
+      padding: 88px 0;
+      background: var(--field);
+      color: var(--type);
+    }
+
+    .story .wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .story .kicker { color: var(--accent); }
+
+    .story h2 { color: var(--type); }
+
+    .story .copy p {
+      color: rgba(250, 250, 249, 0.78);
+      font-size: 16px;
+      line-height: 1.65;
+      max-width: 48ch;
+    }
+
+    .story .copy p + p { margin-top: 16px; }
+
+    .story-aside {
+      border-left: 1px solid rgba(250, 250, 249, 0.14);
+      padding-left: 36px;
+    }
+
+    .story-aside p {
+      font-family: Cormorant, Georgia, serif;
+      font-size: 28px;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--type);
+    }
+
+    .story-aside span {
+      display: block;
+      margin-top: 18px;
+      font-family: Montserrat, sans-serif;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Work */
+    .work {
+      padding: 88px 0 80px;
+      background: var(--paper);
+    }
+
+    .work .intro {
+      max-width: 42ch;
+      margin: 12px 0 40px;
+      color: var(--secondary);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .job {
+      display: block;
+      color: inherit;
+    }
+
+    .job figure {
+      overflow: hidden;
+      background: #E7E5E4;
+      aspect-ratio: 4 / 3;
+    }
+
+    .job img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 320ms ease;
+    }
+
+    .job:hover img { transform: scale(1.03); }
+
+    .job figcaption {
+      padding: 16px 2px 0;
+    }
+
+    .job h3 { font-size: 22px; }
+
+    .job p {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--secondary);
+    }
+
+    /* Quote */
+    .quote {
+      padding: 88px 0 96px;
+      background: #F5F5F4;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote .wrap {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .quote .intro {
+      margin-top: 12px;
+      color: var(--secondary);
+      max-width: 36ch;
+    }
+
+    .quote .meta {
+      margin-top: 28px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--secondary);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 18px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--secondary);
+    }
+
+    label.full { grid-column: 1 / -1; }
+
+    input, select, textarea {
+      width: 100%;
+      height: 44px;
+      padding: 0 12px;
+      border: 1px solid var(--border);
+      background: var(--paper);
+      color: var(--fg);
+      font-family: Montserrat, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      border-radius: 0;
+      outline: none;
+      transition: border-color var(--motion);
+    }
+
+    textarea {
+      height: 110px;
+      padding: 12px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .form-actions .cta-solid {
+      height: 44px;
+      padding: 0 22px;
+      border: none;
+    }
+
+    .form-note {
+      font-size: 13px;
+      color: var(--secondary);
+    }
+
+    .form-note[hidden] { display: none; }
+
+    /* Footer */
+    footer {
+      background: var(--field);
+      color: var(--type);
+      padding: 36px 0;
+    }
+
+    footer .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    footer .mark { font-size: 20px; }
+
+    .nav-foot {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-foot a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color var(--motion);
+    }
+
+    .nav-foot a:hover { color: var(--type); }
+
+    footer .loc {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .cta, .nav-fold a, .nav-foot a, .service, input, select, textarea { transition: none; }
+      .job img { transition: none; }
+      .job:hover img { transform: none; }
+    }
+
+    @media (max-width: 1279px) {
+      .fold {
+        width: 100%;
+        height: auto;
+        min-height: 800px;
+      }
+
+      header {
+        left: 24px;
+        right: 24px;
+        top: 24px;
+      }
+
+      .plate {
+        left: 24px;
+        bottom: 24px;
+      }
+
+      .caption { right: 24px; bottom: 24px; }
+    }
+
+    @media (max-width: 1024px) {
+      .nav-fold { display: none; }
+
+      .service-grid,
+      .work-grid,
+      .story .wrap,
+      .quote .wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .story-aside {
+        border-left: none;
+        border-top: 1px solid rgba(250, 250, 249, 0.14);
+        padding-left: 0;
+        padding-top: 28px;
+      }
+
+      .services, .story, .work, .quote { padding: 64px 0; }
+    }
+
+    @media (max-width: 720px) {
+      .fold {
+        min-height: 100svh;
+        height: auto;
+      }
+
+      .scene { inset: 10px; }
+
+      header {
+        height: auto;
+        min-height: 52px;
+        padding: 10px 14px;
+        flex-wrap: wrap;
+        top: 20px;
+        left: 18px;
+        right: 18px;
+      }
+
+      .trust { display: none; }
+
+      .plate {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: calc(100% - 36px);
+        margin: 280px 18px 18px;
+      }
+
+      h1 { font-size: 36px; }
+
+      .caption { display: none; }
+
+      .trust-strip .wrap { gap: 4px 0; }
+
+      form { grid-template-columns: 1fr; }
+
+      footer .wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-foot { flex-wrap: wrap; }
+
+      .wrap { width: calc(100% - 36px); }
+
+      h2 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="fold-band">
+    <div class="fold" id="top">
+      <div class="scene" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
+          alt="Finished garden at dusk: timber deck, concrete path, and planting around a built house.">
+      </div>
+
+      <header class="glass">
+        <a class="mark" href="#top">Pearl Landscapes</a>
+        <div class="head-right">
+          <nav class="nav-fold" aria-label="Page">
+            <a href="#services">Services</a>
+            <a href="#story">Story</a>
+            <a href="#work">Work</a>
+            <a href="#quote">Quote</a>
+          </nav>
+          <p class="trust"><b>Auckland</b><span class="dot"></span>Own crew</p>
+          <a class="cta" href="#quote">Request a quote</a>
+        </div>
+      </header>
+
+      <section class="plate glass">
+        <div class="rule" aria-hidden="true"></div>
+        <h1>Design and construct.<br><em>Our crew.</em></h1>
+        <p class="lead">We design the garden, then our Auckland crew builds it — timber decks, concrete, planting. One team, through to handover.</p>
+        <div class="plate-row">
+          <a class="cta cta-solid" href="#quote">Request a quote</a>
+          <p class="crew">Auckland · Own crew</p>
+        </div>
+      </section>
+
+      <p class="caption glass">Built work<span>Deck</span>· Concrete · Planting</p>
+    </div>
+  </div>
+
+  <div class="trust-strip">
+    <div class="wrap">
+      Auckland<span class="dot"></span>Own crew<span class="dot"></span>Full outdoor builds
+    </div>
+  </div>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <p class="kicker">What we build</p>
+      <h2>Full outdoor builds. Design and construct, with our crew.</h2>
+      <p class="intro">One Auckland team on the tools — from first dig to planted beds. We do not subcontract the job away.</p>
+      <div class="service-grid">
+        <article class="service">
+          <p class="idx">01</p>
+          <h3>Excavating</h3>
+          <p>Site cut, levels, and cart-away so the build sits right from the ground up.</p>
+        </article>
+        <article class="service">
+          <p class="idx">02</p>
+          <h3>Decking</h3>
+          <p>Timber decks built by our carpenters — structure, boards, and finish.</p>
+        </article>
+        <article class="service">
+          <p class="idx">03</p>
+          <h3>Concrete</h3>
+          <p>Paths, pads, and patio slabs poured and finished on site.</p>
+        </article>
+        <article class="service">
+          <p class="idx">04</p>
+          <h3>Fencing</h3>
+          <p>Boundary and screen fences set, posted, and lined out by our crew.</p>
+        </article>
+        <article class="service">
+          <p class="idx">05</p>
+          <h3>Retaining / block walls</h3>
+          <p>Timber and block retaining to hold banks and make usable ground.</p>
+        </article>
+        <article class="service">
+          <p class="idx">06</p>
+          <h3>Planting, soiling, mulching</h3>
+          <p>Soil, plant, and mulch to close the job — beds ready at handover.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="wrap">
+      <div class="copy">
+        <p class="kicker">How we work</p>
+        <h2>We design the garden. Then our crew builds it.</h2>
+      </div>
+      <div>
+        <div class="copy">
+          <p>Pearl Landscapes is a design-and-construct installer, not an architect studio. We draw the outdoor build, then the same Auckland crew puts it in the ground — excavators, carpenters, and planters on our own books.</p>
+          <p>You deal with one team from first measure to handover. No separate designer. No hired-in installers walking the plan for the first time on day one.</p>
+        </div>
+        <div class="story-aside">
+          <p>A tradie installer that designs the work it builds.</p>
+          <span>Auckland · Own crew</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="wrap">
+      <p class="kicker">Selected work</p>
+      <h2>Jobs our crew put in the ground.</h2>
+      <p class="intro">Three Auckland outdoor builds — deck, house edge, and planted garden. Design and construct, finished by us.</p>
+      <div class="work-grid">
+        <article class="job">
+          <figure>
+            <img
+              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=80"
+              alt="Timber deck with outdoor furniture, built as part of a residential outdoor job."
+              width="1600"
+              height="1200">
+          </figure>
+          <figcaption>
+            <h3>Timber deck</h3>
+            <p>Framed and boarded by our crew. Level, drainage, and finish in one build.</p>
+          </figcaption>
+        </article>
+        <article class="job">
+          <figure>
+            <img
+              src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80"
+              alt="House and patio with concrete paving and a covered outdoor edge."
+              width="1600"
+              height="1200">
+          </figure>
+          <figcaption>
+            <h3>House and patio</h3>
+            <p>Patio slab and house edge — concrete, levels, and a clean threshold.</p>
+          </figcaption>
+        </article>
+        <article class="job">
+          <figure>
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80"
+              alt="Planted garden beds with layered shrubs and mulched soil."
+              width="1600"
+              height="1200">
+          </figure>
+          <figcaption>
+            <h3>Planted garden</h3>
+            <p>Soiling, planting, and mulch to close the outdoor build.</p>
+          </figcaption>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote" id="quote">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Start a job</p>
+        <h2>Request a quote.</h2>
+        <p class="intro">Tell us the suburb and what you want built. We will come back with the next step — measure, design, then our crew.</p>
+        <p class="meta">Auckland · Own crew · Full outdoor builds</p>
+      </div>
+      <form id="quote-form" action="#" method="post" novalidate>
+        <label>
+          Name
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>
+          Phone
+          <input type="tel" name="phone" autocomplete="tel" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <label>
+          Suburb
+          <input type="text" name="suburb" autocomplete="address-level2" required>
+        </label>
+        <label class="full">
+          What to build
+          <input type="text" name="build" placeholder="Deck, concrete, fencing, retaining, planting…" required>
+        </label>
+        <label class="full">
+          Notes
+          <textarea name="notes" rows="4" placeholder="Access, timing, anything we should know."></textarea>
+        </label>
+        <div class="form-actions">
+          <button class="cta cta-solid" type="submit">Request a quote</button>
+          <p class="form-note" id="quote-status" hidden>Received. We will be in touch.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <a class="mark" href="#top">Pearl Landscapes</a>
+      <nav class="nav-foot" aria-label="Footer">
+        <a href="#services">Services</a>
+        <a href="#story">Story</a>
+        <a href="#work">Work</a>
+        <a href="#quote">Quote</a>
+      </nav>
+      <p class="loc">Auckland · Own crew</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('quote-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = document.getElementById('quote-status');
+      status.hidden = false;
+      this.reset();
+    });
+  </script>
+</body>
+</html>

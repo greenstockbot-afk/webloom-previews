@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pearl Landscapes — Auckland. Full outdoor builds.</title>
+  <meta name="description" content="Pearl Landscapes. Auckland tradie. Decks, walls, planting — we construct them. Planting, excavating, decking, concrete, fencing, retaining. Request a quote.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171717;
+      --paper: #FFFFFF;
+      --gold: #A16207;
+      --gold-thin: rgba(161, 98, 7, 0.55);
+      --line: rgba(23, 23, 23, 0.12);
+      --mute: rgba(23, 23, 23, 0.62);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Josefin Sans", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Fold: locked 1280 × 800 ── */
+    .fold {
+      width: 1280px;
+      height: 800px;
+      max-width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .fold-copy {
+      padding: 48px 64px 56px 72px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--line);
+    }
+
+    .mast {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .wordmark {
+      font-family: "Cinzel", serif;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .place {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--mute);
+      font-weight: 400;
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      margin: 28px 0 0;
+    }
+
+    .fold-mid {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 8px;
+    }
+
+    .kicker {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: "Cinzel", serif;
+      font-weight: 400;
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      max-width: 11ch;
+    }
+
+    .lead {
+      margin-top: 28px;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.45;
+      max-width: 28ch;
+      color: var(--ink);
+    }
+
+    .fold-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 8px;
+    }
+
+    .builds-line {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mute);
+      max-width: 28ch;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 0 28px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 160ms ease, color 160ms ease;
+    }
+
+    .btn:hover { background: var(--paper); color: var(--ink); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+    .fold-photo {
+      position: relative;
+      background: #1a1a1a;
+    }
+
+    .fold-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 55% 60%;
+    }
+
+    .photo-cap {
+      position: absolute;
+      left: 28px;
+      bottom: 24px;
+      color: var(--paper);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      mix-blend-mode: difference;
+    }
+
+    /* ── Below the fold ── */
+    .wrap {
+      width: 1280px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 72px;
+    }
+
+    .band {
+      border-top: 1px solid var(--line);
+    }
+
+    .works {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 64px;
+      padding: 88px 0 96px;
+    }
+
+    .col-label {
+      font-family: "Cinzel", serif;
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding-top: 6px;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px 48px;
+    }
+
+    .job h3 {
+      font-family: "Cinzel", serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .job p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--mute);
+    }
+
+    .gold-rule {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .build {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: 520px;
+      border-top: 1px solid var(--line);
+    }
+
+    .build-photo {
+      position: relative;
+      background: #222;
+    }
+
+    .build-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 70%;
+      min-height: 520px;
+    }
+
+    .build-copy {
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .build-copy h2 {
+      font-family: "Cinzel", serif;
+      font-weight: 400;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      max-width: 14ch;
+    }
+
+    .build-copy p {
+      margin-top: 22px;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.65;
+      max-width: 36ch;
+      color: var(--mute);
+    }
+
+    .quote-block {
+      padding: 96px 0 108px;
+    }
+
+    .quote-block h2 {
+      font-family: "Cinzel", serif;
+      font-weight: 400;
+      font-size: 40px;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .quote-block .sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--mute);
+      margin-bottom: 40px;
+      max-width: 42ch;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 28px;
+      max-width: 760px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 8px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      padding: 8px 0 10px;
+      outline: none;
+      border-radius: 0;
+    }
+
+    textarea { min-height: 88px; resize: vertical; }
+
+    input:focus, textarea:focus, select:focus {
+      border-bottom-color: var(--gold);
+    }
+
+    .form-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-top: 12px;
+    }
+
+    .note {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--mute);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 72px 36px;
+      width: 1280px;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    footer .wordmark { font-size: 12px; }
+
+    footer p {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+
+    @media (max-width: 1100px) {
+      .fold { grid-template-columns: 1fr; height: auto; min-height: 800px; }
+      .fold-photo { min-height: 380px; }
+      .fold-copy { padding: 40px 40px 48px; }
+      .wrap, footer { padding-left: 40px; padding-right: 40px; }
+      .works { grid-template-columns: 1fr; gap: 32px; }
+      .build { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIRST FOLD · 1280 × 800 · quote on the fold -->
+  <section class="fold" id="top">
+    <div class="fold-copy">
+      <header class="mast">
+        <span class="wordmark">Pearl Landscapes</span>
+        <span class="place">Auckland</span>
+      </header>
+      <div class="rule"></div>
+
+      <div class="fold-mid">
+        <p class="kicker">Tradie · Outdoor construction</p>
+        <h1>Full outdoor builds.</h1>
+        <p class="lead">Decks, walls, planting — we construct them.</p>
+      </div>
+
+      <div class="fold-cta">
+        <p class="builds-line">Planting · Excavating · Decking · Concrete · Fencing · Retaining</p>
+        <a class="btn" href="#quote">Request a quote</a>
+      </div>
+    </div>
+
+    <figure class="fold-photo">
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-b4f5568ebd93?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+        alt="Finished timber deck and retaining, built level against the house — constructed outdoor work, not a garden sketch."
+        width="640"
+        height="800">
+      <figcaption class="photo-cap">Built deck · retaining edge</figcaption>
+    </figure>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="works">
+        <p class="col-label">What we build</p>
+        <div class="works-grid">
+          <article class="job">
+            <div class="gold-rule"></div>
+            <h3>Decking</h3>
+            <p>Hardwood and composite decks, set true. Posts, bearers, boards — finished so you can walk on them the same week.</p>
+          </article>
+          <article class="job">
+            <div class="gold-rule"></div>
+            <h3>Retaining</h3>
+            <p>Timber and block walls that hold the ground. Cut, drain, backfill. The structure first; the planting after.</p>
+          </article>
+          <article class="job">
+            <div class="gold-rule"></div>
+            <h3>Concrete</h3>
+            <p>Paths, pads, steps. Formwork, pour, finish. Clean edges. No decorative swirl — just a surface that lasts.</p>
+          </article>
+          <article class="job">
+            <div class="gold-rule"></div>
+            <h3>Fencing</h3>
+            <p>Boundary and screen fences. Posts in the ground, rails straight, palings even. Built to the line.</p>
+          </article>
+          <article class="job">
+            <div class="gold-rule"></div>
+            <h3>Excavating</h3>
+            <p>Cut and fill for the build. Levels set before anything else goes in. Machine work, then hand finish.</p>
+          </article>
+          <article class="job">
+            <div class="gold-rule"></div>
+            <h3>Planting</h3>
+            <p>Soil, drainage, trees and hedges after the hard work is in. Planting that sits on a constructed site.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="build">
+    <figure class="build-photo">
+      <img
+        src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdbc?auto=format&amp;fit=crop&amp;w=1600&amp;q=80"
+        alt="Completed outdoor living: timber deck boards meeting a low retaining wall and planted bed."
+        width="720"
+        height="520">
+    </figure>
+    <div class="build-copy">
+      <p class="kicker">Installer craft</p>
+      <h2>One job. Built, not styled.</h2>
+      <p>We are a landscape construction crew in Auckland. We excavate, retain, pour, deck, fence, and plant. The photograph is the finished build — boards, wall, ground — not a mood.</p>
+      <p>If the site needs a wall before a garden, we build the wall. Quote the work. We start when the numbers are agreed.</p>
+    </div>
+  </section>
+
+  <section class="band" id="quote">
+    <div class="wrap">
+      <div class="quote-block">
+        <h2>Request a quote</h2>
+        <p class="sub">Site in Auckland. Tell us what you want built — deck, retaining, fence, concrete, planting — and we will come back with a number.</p>
+        <form action="#" method="post">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+          </div>
+          <div>
+            <label for="suburb">Suburb</label>
+            <input id="suburb" name="suburb" type="text" placeholder="Auckland">
+          </div>
+          <div class="full">
+            <label for="work">What to build</label>
+            <select id="work" name="work">
+              <option>Decking</option>
+              <option>Retaining</option>
+              <option>Concrete</option>
+              <option>Fencing</option>
+              <option>Excavating</option>
+              <option>Planting</option>
+              <option>Full outdoor build</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" placeholder="Site, access, timing."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn" type="submit">Request a quote</button>
+            <span class="note">Pearl Landscapes · Auckland tradie</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="wordmark">Pearl Landscapes</span>
+    <p>Auckland · Planting · Excavating · Decking · Concrete · Fencing · Retaining</p>
+  </footer>
+
+</body>
+</html>
