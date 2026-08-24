@@ -8,7 +8,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23334155'/%3E%3Crect x='6' y='22' width='20' height='3' fill='%23059669'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #334155;
@@ -39,6 +39,7 @@
 
     a { color: inherit; text-decoration: none; }
     button, input, select, textarea { font: inherit; }
+    img { display: block; }
 
     .display {
       font-family: "Bebas Neue", "Arial Narrow", sans-serif;
@@ -47,7 +48,7 @@
       line-height: 0.92;
     }
 
-    /* ── Fold: 1280 × 800 — services + quote ── */
+    /* ── Fold: 1280 × 800 — photo services + quote ── */
     .fold {
       width: 1280px;
       height: 800px;
@@ -107,9 +108,9 @@
 
     .fold-main {
       display: grid;
-      grid-template-columns: 1fr 368px;
-      gap: 24px;
-      padding: 24px 40px 28px;
+      grid-template-columns: 1fr 360px;
+      gap: 20px;
+      padding: 20px 40px 20px;
       min-height: 0;
     }
 
@@ -125,83 +126,103 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--secondary);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     h1 {
       font-family: "Bebas Neue", "Arial Narrow", sans-serif;
       font-weight: 400;
-      font-size: 72px;
+      font-size: 60px;
       line-height: 0.88;
       letter-spacing: 0.01em;
       color: var(--fg);
-      max-width: 14ch;
+      max-width: 16ch;
     }
 
     .rule {
       width: 48px;
       height: 4px;
       background: var(--accent);
-      margin: 14px 0 12px;
+      margin: 10px 0 10px;
     }
 
     .lead {
-      max-width: 52ch;
-      font-size: 16px;
+      max-width: 54ch;
+      font-size: 15px;
       font-weight: 500;
       color: var(--secondary);
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .services {
       flex: 1;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 10px;
+      gap: 8px;
       min-height: 0;
     }
 
     .svc {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 0;
       background: var(--card);
       border: 1px solid var(--border);
-      padding: 16px 16px 14px;
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
+      overflow: hidden;
     }
 
-    .svc-num {
-      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
-      font-size: 22px;
-      letter-spacing: 0.08em;
-      color: var(--primary);
-      line-height: 1;
-      margin-bottom: 8px;
+    .svc img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .svc-copy {
+      padding: 8px 10px 9px;
+      background: var(--card);
+      border-top: 1px solid var(--border);
     }
 
     .svc h2 {
       font-family: "Bebas Neue", "Arial Narrow", sans-serif;
       font-weight: 400;
-      font-size: 26px;
-      letter-spacing: 0.04em;
+      font-size: 22px;
+      letter-spacing: 0.05em;
       line-height: 1;
       color: var(--fg);
-      margin-bottom: 8px;
+      margin-bottom: 3px;
     }
 
     .svc p {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 500;
-      line-height: 1.4;
+      line-height: 1.25;
       color: var(--secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .also {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--secondary);
+      letter-spacing: 0.01em;
+    }
+
+    .also strong {
+      font-weight: 700;
+      color: var(--fg);
     }
 
     /* Quote card on the fold */
     .quote {
       background: var(--card);
       border: 1px solid var(--border);
-      padding: 22px 22px 18px;
+      padding: 20px 20px 16px;
       display: flex;
       flex-direction: column;
       min-height: 0;
@@ -210,14 +231,14 @@
     .quote h2 {
       font-family: "Bebas Neue", "Arial Narrow", sans-serif;
       font-weight: 400;
-      font-size: 32px;
+      font-size: 30px;
       letter-spacing: 0.04em;
       line-height: 1;
       color: var(--fg);
     }
 
     .quote .sub {
-      margin: 8px 0 18px;
+      margin: 8px 0 16px;
       font-size: 14px;
       font-weight: 500;
       color: var(--secondary);
@@ -249,7 +270,7 @@
       font-size: 15px;
       font-weight: 500;
       outline: none;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       border-radius: 0;
     }
 
@@ -274,7 +295,7 @@
     }
 
     .hint {
-      margin-top: 12px;
+      margin-top: 10px;
       font-size: 12px;
       font-weight: 500;
       color: var(--secondary);
@@ -301,7 +322,7 @@
 
     .jobs {
       border-top: 1px solid var(--border);
-      padding: 40px 0 48px;
+      padding: 36px 0 44px;
     }
 
     .jobs-head {
@@ -309,7 +330,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .jobs h2 {
@@ -396,15 +417,15 @@
 
       .fold-main {
         grid-template-columns: 1fr;
-        padding: 24px 24px 32px;
+        padding: 20px 24px 28px;
       }
 
       .services {
-        grid-template-rows: auto auto;
-        min-height: 280px;
+        grid-template-rows: 220px 220px;
+        min-height: 0;
       }
 
-      h1 { font-size: 56px; }
+      h1 { font-size: 52px; }
 
       .quote { min-height: 420px; }
 
@@ -416,9 +437,10 @@
     @media (max-width: 720px) {
       header { flex-wrap: wrap; height: auto; padding: 12px 16px; gap: 10px; }
       .coverage { flex-basis: 100%; order: 3; }
-      .fold-main { padding: 20px 16px 28px; }
-      .services { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-      h1 { font-size: 44px; }
+      .fold-main { padding: 18px 16px 24px; }
+      .services { grid-template-columns: 1fr; grid-template-rows: repeat(4, 200px); }
+      h1 { font-size: 42px; }
+      .svc p { white-space: normal; }
       .job-grid { grid-template-columns: 1fr; }
       .jobs-head { flex-direction: column; }
       footer .wrap { flex-direction: column; align-items: flex-start; }
@@ -440,40 +462,40 @@
         <p class="kicker">Tradie installer · Full outdoor builds</p>
         <h1>Full outdoor builds.</h1>
         <div class="rule" aria-hidden="true"></div>
-        <p class="lead">Auckland crew for decks, retaining, planting, concrete and fencing. We install the job — name and suburb is enough to start a quote.</p>
+        <p class="lead">Auckland crew for decks, retaining, planting and concrete. We install the job — name and suburb is enough to start a quote.</p>
 
         <div class="services" aria-label="Services">
           <article class="svc" id="decks">
-            <div class="svc-num">01</div>
-            <h2>Decks</h2>
-            <p>Kwila, pine and composite. New builds, repairs, stairs, balustrades.</p>
+            <img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Completed timber deck boards on an outdoor build" width="900" height="600">
+            <div class="svc-copy">
+              <h2>Decks</h2>
+              <p>Kwila, pine and composite. New builds and stairs.</p>
+            </div>
           </article>
           <article class="svc" id="retaining">
-            <div class="svc-num">02</div>
-            <h2>Retaining</h2>
-            <p>Timber, block and sleeper walls. Drainage and backfill included.</p>
+            <img src="https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Timber retaining wall on a sloped residential site" width="900" height="600">
+            <div class="svc-copy">
+              <h2>Retaining</h2>
+              <p>Timber, block and sleeper walls with drainage.</p>
+            </div>
           </article>
           <article class="svc" id="planting">
-            <div class="svc-num">03</div>
-            <h2>Planting</h2>
-            <p>Beds, hedges, native screens. Soil prep after the hard work.</p>
+            <img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Planted garden beds after a landscape install" width="900" height="600">
+            <div class="svc-copy">
+              <h2>Planting</h2>
+              <p>Beds, hedges and native screens after hard work.</p>
+            </div>
           </article>
           <article class="svc" id="concrete">
-            <div class="svc-num">04</div>
-            <h2>Concrete</h2>
-            <p>Patios, paths, pads. Broom, exposed or coloured finish.</p>
-          </article>
-          <article class="svc" id="fencing">
-            <div class="svc-num">05</div>
-            <h2>Fencing</h2>
-            <p>Paling, batten, pool and boundary. Gates built to the line.</p>
-          </article>
-          <article class="svc" id="excavating">
-            <div class="svc-num">06</div>
-            <h2>Excavating</h2>
-            <p>Cut, fill, cart-away. Levels set before anything else goes in.</p>
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Freshly poured concrete patio with a clean finish" width="900" height="600">
+            <div class="svc-copy">
+              <h2>Concrete</h2>
+              <p>Patios, paths and pads. Broom or exposed finish.</p>
+            </div>
           </article>
         </div>
+
+        <p class="also">Also <strong>fencing</strong> and <strong>excavating</strong> — paling, gates, cut and fill. Put it on the quote.</p>
       </div>
 
       <aside class="quote" id="quote">
