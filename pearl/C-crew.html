@@ -9,5 +9,540 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #334155;
+      --secondary: #475569;
+      --accent: #059669;
+      --on-accent: #000000;
+      --bg: #F8FAFC;
+      --fg: #0F172A;
+      --card: #FFFFFF;
+      --border: #E6E8EA;
+      --muted: #F2F3F4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    body {
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .display {
+      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 0.92;
+    }
+
+    /* ── Fold: 1280 × 800 — services + quote ── */
+    .fold {
+      width: 1280px;
+      height: 800px;
+      max-width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-rows: 56px 1fr;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 40px;
+      background: var(--primary);
+      color: var(--card);
+    }
+
+    .wordmark {
+      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .coverage {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 16px;
+      border: 0;
+      background: var(--accent);
+      color: var(--on-accent);
+      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn:hover { filter: brightness(1.06); }
+    .btn-full { width: 100%; height: 48px; font-size: 20px; }
+
+    .fold-main {
+      display: grid;
+      grid-template-columns: 1fr 368px;
+      gap: 24px;
+      padding: 24px 40px 28px;
+      min-height: 0;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .kicker {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 0.88;
+      letter-spacing: 0.01em;
+      color: var(--fg);
+      max-width: 14ch;
+    }
+
+    .rule {
+      width: 48px;
+      height: 4px;
+      background: var(--accent);
+      margin: 14px 0 12px;
+    }
+
+    .lead {
+      max-width: 52ch;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--secondary);
+      margin-bottom: 18px;
+    }
+
+    .services {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .svc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 16px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .svc-num {
+      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .svc h2 {
+      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--fg);
+      margin-bottom: 8px;
+    }
+
+    .svc p {
+      font-size: 13.5px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--secondary);
+    }
+
+    /* Quote card on the fold */
+    .quote {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 22px 22px 18px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .quote h2 {
+      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+      font-weight: 400;
+      font-size: 32px;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--fg);
+    }
+
+    .quote .sub {
+      margin: 8px 0 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--secondary);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      height: 44px;
+      border: 1px solid var(--border);
+      background: var(--muted);
+      color: var(--fg);
+      padding: 0 12px;
+      font-size: 15px;
+      font-weight: 500;
+      outline: none;
+      margin-bottom: 14px;
+      border-radius: 0;
+    }
+
+    textarea {
+      height: 88px;
+      padding: 10px 12px;
+      resize: none;
+      flex: 1;
+      min-height: 72px;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      background: var(--card);
+    }
+
+    .opt {
+      font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--secondary);
+    }
+
+    .hint {
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--secondary);
+      text-align: center;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    .status[hidden] { display: none; }
+
+    /* Below fold */
+    .wrap {
+      width: 1280px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .jobs {
+      border-top: 1px solid var(--border);
+      padding: 40px 0 48px;
+    }
+
+    .jobs-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    .jobs h2 {
+      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+      font-weight: 400;
+      font-size: 36px;
+      letter-spacing: 0.04em;
+      color: var(--fg);
+    }
+
+    .jobs .intro {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--secondary);
+      max-width: 42ch;
+    }
+
+    .job-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .job {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 16px;
+    }
+
+    .job .tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .job h3 {
+      font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+      margin-bottom: 6px;
+    }
+
+    .job p {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--secondary);
+    }
+
+    footer {
+      background: var(--primary);
+      color: var(--card);
+      padding: 20px 0;
+    }
+
+    footer .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    footer .wordmark { font-size: 22px; }
+
+    footer p {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (max-width: 1279px) {
+      .fold {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        grid-template-rows: auto auto;
+      }
+
+      .fold-main {
+        grid-template-columns: 1fr;
+        padding: 24px 24px 32px;
+      }
+
+      .services {
+        grid-template-rows: auto auto;
+        min-height: 280px;
+      }
+
+      h1 { font-size: 56px; }
+
+      .quote { min-height: 420px; }
+
+      .job-grid { grid-template-columns: 1fr 1fr; }
+
+      .wrap, header { padding-left: 24px; padding-right: 24px; }
+    }
+
+    @media (max-width: 720px) {
+      header { flex-wrap: wrap; height: auto; padding: 12px 16px; gap: 10px; }
+      .coverage { flex-basis: 100%; order: 3; }
+      .fold-main { padding: 20px 16px 28px; }
+      .services { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      h1 { font-size: 44px; }
+      .job-grid { grid-template-columns: 1fr; }
+      .jobs-head { flex-direction: column; }
+      footer .wrap { flex-direction: column; align-items: flex-start; }
+      .wrap { padding-left: 16px; padding-right: 16px; }
+    }
+  </style>
 </head>
+<body>
+
+  <section class="fold" id="top">
+    <header>
+      <a class="wordmark" href="#top">Pearl Landscapes</a>
+      <p class="coverage">Auckland · North Shore to South Auckland</p>
+      <a class="btn" href="#quote">Request a quote</a>
+    </header>
+
+    <div class="fold-main">
+      <div class="hero">
+        <p class="kicker">Tradie installer · Full outdoor builds</p>
+        <h1>Full outdoor builds.</h1>
+        <div class="rule" aria-hidden="true"></div>
+        <p class="lead">Auckland crew for decks, retaining, planting, concrete and fencing. We install the job — name and suburb is enough to start a quote.</p>
+
+        <div class="services" aria-label="Services">
+          <article class="svc" id="decks">
+            <div class="svc-num">01</div>
+            <h2>Decks</h2>
+            <p>Kwila, pine and composite. New builds, repairs, stairs, balustrades.</p>
+          </article>
+          <article class="svc" id="retaining">
+            <div class="svc-num">02</div>
+            <h2>Retaining</h2>
+            <p>Timber, block and sleeper walls. Drainage and backfill included.</p>
+          </article>
+          <article class="svc" id="planting">
+            <div class="svc-num">03</div>
+            <h2>Planting</h2>
+            <p>Beds, hedges, native screens. Soil prep after the hard work.</p>
+          </article>
+          <article class="svc" id="concrete">
+            <div class="svc-num">04</div>
+            <h2>Concrete</h2>
+            <p>Patios, paths, pads. Broom, exposed or coloured finish.</p>
+          </article>
+          <article class="svc" id="fencing">
+            <div class="svc-num">05</div>
+            <h2>Fencing</h2>
+            <p>Paling, batten, pool and boundary. Gates built to the line.</p>
+          </article>
+          <article class="svc" id="excavating">
+            <div class="svc-num">06</div>
+            <h2>Excavating</h2>
+            <p>Cut, fill, cart-away. Levels set before anything else goes in.</p>
+          </article>
+        </div>
+      </div>
+
+      <aside class="quote" id="quote">
+        <h2>Request a quote</h2>
+        <p class="sub">Name and suburb is enough to start. We call the same weekday.</p>
+        <form id="quote-form" action="#" method="post">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+
+          <label for="suburb">Suburb</label>
+          <input id="suburb" name="suburb" type="text" autocomplete="address-level2" placeholder="e.g. Grey Lynn, Albany" required>
+
+          <label for="job">What do you need? <span class="opt">(optional)</span></label>
+          <textarea id="job" name="job" placeholder="Deck, retaining, patio, planting, fence…"></textarea>
+
+          <button class="btn btn-full" type="submit">Request a quote</button>
+        </form>
+        <p class="status" id="quote-status" hidden>Got it. We will call you.</p>
+        <p class="hint">Pearl Landscapes · Auckland · Full outdoor builds</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="jobs" id="jobs">
+    <div class="wrap">
+      <div class="jobs-head">
+        <h2>Recent jobs</h2>
+        <p class="intro">Typical Auckland scopes we quote in a week — decks, sleeper walls, patios, paling and planting.</p>
+      </div>
+      <div class="job-grid">
+        <article class="job">
+          <p class="tag">Ponsonby · Deck</p>
+          <h3>42 m² kwila deck + stairs</h3>
+          <p>Pile check, new joists, balustrade. Eight days on site.</p>
+        </article>
+        <article class="job">
+          <p class="tag">Albany · Retaining</p>
+          <h3>18 m timber sleeper wall</h3>
+          <p>Cut-and-fill, ag pipe, filter cloth, cap. Drawings supplied.</p>
+        </article>
+        <article class="job">
+          <p class="tag">Onehunga · Concrete</p>
+          <h3>Patio and side path</h3>
+          <p>Broom finish, control joints, fall to channel. Three-day pour.</p>
+        </article>
+        <article class="job">
+          <p class="tag">Takapuna · Fence</p>
+          <h3>Boundary paling and hedge</h3>
+          <p>1.8 m fence, gates, soil refresh, native screen planting.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <a class="wordmark" href="#top">Pearl Landscapes</a>
+      <p>Auckland · Decks · Retaining · Planting · Concrete · Fencing · Excavating</p>
+      <p>Request a quote</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('quote-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = document.getElementById('quote-status');
+      status.hidden = false;
+      this.reset();
+    });
+  </script>
+</body>
 </html>
