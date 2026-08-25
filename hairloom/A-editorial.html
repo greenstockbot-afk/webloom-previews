@@ -200,12 +200,11 @@
 
     @media (max-width: 900px) {
       .nav-toggle { display: block; }
-      .nav-links, .nav .btn { display: none; }
+      .nav-links { display: none; }
       .nav.open .nav-links {
         display: flex; flex-direction: column; position: absolute; left: 0; right: 0; top: 64px;
         background: var(--paper); padding: 16px 20px 24px; border-bottom: 1px solid var(--gold-line);
       }
-      .nav.open .btn { display: inline-flex; margin: 8px 20px 16px; }
       .hero-grid, .section-head, .trust, .plates, .services, .story, .quotes, .book-grid {
         grid-template-columns: 1fr;
       }

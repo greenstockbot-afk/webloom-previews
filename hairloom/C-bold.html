@@ -189,12 +189,11 @@
     }
     @media (max-width: 900px) {
       .nav-toggle { display: block; }
-      .nav-links, .nav .book { display: none; }
+      .nav-links { display: none; }
       .nav.open .nav-links {
         display: flex; flex-direction: column; position: absolute; inset: 62px 0 auto;
         background: var(--ink); padding: 16px 18px 22px;
       }
-      .nav.open .book { display: inline-flex; margin: 0 18px 16px; }
       .hero, .proof, .mosaic, .about, .price-grid, .quotes, .book-box { grid-template-columns: 1fr; }
       .mosaic { grid-template-rows: none; }
       .mosaic figure:nth-child(1) { grid-row: auto; min-height: 320px; }

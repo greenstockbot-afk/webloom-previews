@@ -186,12 +186,11 @@
     }
     @media (max-width: 900px) {
       .nav-toggle { display: block; }
-      .nav-links, .nav .cta { display: none; }
+      .nav-links { display: none; }
       .nav.open .nav-links {
         display: flex; flex-direction: column; position: absolute; inset: 68px 0 auto;
         background: var(--void); padding: 16px 20px 24px; border-bottom: 1px solid var(--line);
       }
-      .nav.open .cta { display: inline-flex; margin: 0 20px 16px; }
       .hero { min-height: 86vh; }
       .split, .creds, .strip, .layered, .prices, .voices, .book-panel { grid-template-columns: 1fr; }
       .menu { padding: 28px 0 0; }
