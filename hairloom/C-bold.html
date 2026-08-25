@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hairloom — Takapuna haircuts, colour, tie dye</title>
+  <meta name="description" content="Hairloom. High-end hair salon in Takapuna, Auckland. Women’s cuts, men’s cuts, colour and tie dye haircuts. Book online.">
+  <meta name="theme-color" content="#F4A7B9">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FFF6EA;
+      --ink: #1C1210;
+      --pink: #F4A7B9;
+      --pink-hot: #E85A8A;
+      --gold: #E0B03A;
+      --gold-deep: #B8860B;
+      --paper: #FFFFFF;
+      --display: "Syne", "Arial Black", sans-serif;
+      --serif: "Source Serif 4", Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream); color: var(--ink);
+      font-family: var(--serif); font-size: 17px; line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+    .skip {
+      position: absolute; left: 10px; top: -48px; z-index: 50;
+      background: var(--ink); color: var(--cream); padding: 8px 12px; text-decoration: none;
+      font-family: var(--display); font-size: 13px; font-weight: 700;
+    }
+    .skip:focus { top: 10px; }
+    .wrap { width: min(1280px, calc(100% - 28px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky; top: 0; z-index: 40; background: var(--ink); color: var(--cream);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 62px; gap: 16px; }
+    .logo {
+      font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.04em;
+      text-decoration: none; display: flex; align-items: baseline; gap: 0;
+    }
+    .logo i { color: var(--pink); font-style: normal; }
+    .nav-links { display: flex; gap: 16px; list-style: none; font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--gold); }
+    .book {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--gold); color: var(--ink); text-decoration: none;
+      font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: 0.04em;
+      text-transform: uppercase; height: 42px; padding: 0 16px; border: 0; cursor: pointer;
+      transform: rotate(-1.5deg); transition: transform 160ms ease, background 160ms ease;
+    }
+    .book:hover { transform: rotate(0deg); background: var(--pink); }
+    .nav-toggle { display: none; background: none; border: 0; color: var(--cream); width: 40px; height: 40px; cursor: pointer; font-family: var(--display); font-weight: 800; }
+
+    .hero {
+      display: grid; grid-template-columns: 1.05fr 0.95fr; min-height: 86vh;
+    }
+    .hero-copy {
+      background: var(--pink); padding: 48px 40px 40px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .place { font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+    h1 {
+      font-family: var(--display); font-weight: 800; letter-spacing: -0.05em; line-height: 0.86;
+      font-size: clamp(3.6rem, 8vw, 7.2rem); text-transform: uppercase;
+    }
+    h1 span { display: block; }
+    h1 .gold { color: var(--gold-deep); }
+    h1 .cream { color: var(--cream); }
+    .hero-copy p { max-width: 34ch; font-size: 18px; margin: 18px 0 24px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .ghost {
+      display: inline-flex; align-items: center; height: 42px; padding: 0 16px;
+      border: 2px solid var(--ink); text-decoration: none;
+      font-family: var(--display); font-weight: 800; font-size: 13px; text-transform: uppercase;
+    }
+    .hero-photo { position: relative; min-height: 520px; }
+    .hero-photo img { min-height: 520px; object-position: center 20%; }
+    .stamp {
+      position: absolute; right: 18px; bottom: 18px;
+      background: var(--gold); color: var(--ink); font-family: var(--display); font-weight: 800;
+      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 12px;
+      transform: rotate(3deg);
+    }
+
+    .ticker {
+      overflow: hidden; background: var(--ink); color: var(--gold);
+      font-family: var(--display); font-weight: 800; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase;
+      white-space: nowrap; padding: 10px 0;
+    }
+    .ticker span { display: inline-block; padding-left: 100%; animation: tick 22s linear infinite; }
+    @keyframes tick { to { transform: translateX(-100%); } }
+
+    section { padding: 56px 0; }
+    h2 {
+      font-family: var(--display); font-weight: 800; letter-spacing: -0.04em; text-transform: uppercase;
+      font-size: clamp(2rem, 5vw, 3.4rem); line-height: 0.95;
+    }
+    .lead { font-size: 18px; max-width: 46ch; margin-top: 12px; }
+
+    .proof {
+      display: grid; grid-template-columns: 1.4fr 0.8fr 0.9fr; gap: 12px;
+    }
+    .proof article { padding: 22px; border: 2px solid var(--ink); }
+    .proof article:first-child { background: var(--gold); transform: rotate(-0.8deg); }
+    .proof h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 22px; letter-spacing: -0.03em; margin-bottom: 8px; }
+
+    .mosaic {
+      display: grid; grid-template-columns: 1.25fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 10px;
+    }
+    .mosaic figure:nth-child(1) { grid-row: 1 / 3; }
+    .mosaic figure:nth-child(2) { background: var(--pink); display: grid; place-items: end start; padding: 16px; }
+    .mosaic figure:nth-child(2) img { position: absolute; inset: 0; opacity: 0.92; }
+    .mosaic figure { position: relative; overflow: hidden; min-height: 180px; }
+    .mosaic figcaption {
+      position: relative; z-index: 1; font-family: var(--display); font-weight: 800;
+      text-transform: uppercase; font-size: 14px; background: var(--cream); padding: 6px 8px;
+    }
+
+    .svc {
+      display: grid; grid-template-columns: 90px 1fr auto; gap: 16px; align-items: baseline;
+      padding: 18px 0; border-top: 3px solid var(--ink);
+    }
+    .svc:last-child { border-bottom: 3px solid var(--ink); }
+    .big {
+      font-family: var(--display); font-weight: 800; font-size: 42px; letter-spacing: -0.06em; color: var(--pink-hot);
+    }
+    .svc h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 22px; letter-spacing: -0.03em; }
+    .svc p { margin-top: 4px; }
+    .tag {
+      font-family: var(--display); font-weight: 800; font-size: 13px; text-transform: uppercase;
+      background: var(--ink); color: var(--cream); padding: 6px 10px;
+    }
+
+    .about {
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 20px; align-items: stretch;
+    }
+    .about-panel { background: var(--ink); color: var(--cream); padding: 36px; }
+    .about-panel h2 { color: var(--pink); }
+    .about-panel p { margin-top: 14px; max-width: 42ch; }
+    .offset { transform: translateY(18px) rotate(1.2deg); min-height: 420px; border: 4px solid var(--gold); }
+
+    .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .price-grid article { background: var(--paper); border: 2px solid var(--ink); padding: 22px; }
+    .price-grid article:nth-child(2) { background: var(--pink); }
+    .price-grid article:nth-child(3) { background: var(--gold); }
+    .price-grid h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 28px; letter-spacing: -0.04em; }
+    .price-grid .n { font-family: var(--display); font-weight: 800; font-size: 32px; margin: 8px 0; }
+
+    .quotes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    blockquote {
+      background: var(--paper); border: 2px solid var(--ink); padding: 20px;
+      font-size: 18px;
+    }
+    blockquote:nth-child(2) { background: var(--ink); color: var(--cream); transform: rotate(1deg); }
+    cite { display: block; margin-top: 10px; font-family: var(--display); font-style: normal; font-weight: 800; font-size: 12px; text-transform: uppercase; color: var(--gold-deep); }
+    blockquote:nth-child(2) cite { color: var(--gold); }
+
+    .book-box {
+      display: grid; grid-template-columns: 0.85fr 1.15fr; background: var(--pink); border: 4px solid var(--ink);
+    }
+    .book-box > div:first-child { padding: 32px; }
+    form { display: grid; gap: 10px; padding: 28px; background: var(--cream); }
+    label { display: grid; gap: 4px; font-family: var(--display); font-weight: 700; font-size: 12px; text-transform: uppercase; }
+    input, select, textarea { border: 2px solid var(--ink); padding: 10px 12px; background: var(--paper); width: 100%; }
+    textarea { min-height: 90px; resize: vertical; }
+    .thanks { display: none; padding: 28px; font-family: var(--display); font-weight: 800; font-size: 28px; text-transform: uppercase; letter-spacing: -0.03em; }
+    .thanks.show { display: block; }
+
+    footer { background: var(--ink); color: var(--cream); padding: 28px 0 40px; }
+    .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--display); font-weight: 700; font-size: 12px; text-transform: uppercase; }
+    .foot a { text-decoration: none; }
+    .foot a:hover { color: var(--gold); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker span { animation: none; padding-left: 0; }
+      .book { transform: none; }
+      .offset, .proof article:first-child, blockquote:nth-child(2) { transform: none; }
+    }
+    @media (max-width: 900px) {
+      .nav-toggle { display: block; }
+      .nav-links, .nav .book { display: none; }
+      .nav.open .nav-links {
+        display: flex; flex-direction: column; position: absolute; inset: 62px 0 auto;
+        background: var(--ink); padding: 16px 18px 22px;
+      }
+      .nav.open .book { display: inline-flex; margin: 0 18px 16px; }
+      .hero, .proof, .mosaic, .about, .price-grid, .quotes, .book-box { grid-template-columns: 1fr; }
+      .mosaic { grid-template-rows: none; }
+      .mosaic figure:nth-child(1) { grid-row: auto; min-height: 320px; }
+      .svc { grid-template-columns: 1fr; }
+      .offset { transform: none; min-height: 280px; }
+      .hero-copy { padding: 32px 22px; }
+      h1 { font-size: clamp(3rem, 16vw, 4.4rem); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="#top">Hair<i>loom</i></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">Menu</button>
+      <ul class="nav-links" id="menu">
+        <li><a href="#work">Gallery</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#notes">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="book" href="#book">Book online</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-label="Home">
+      <div class="hero-copy">
+        <p class="place">Takapuna · Auckland</p>
+        <div>
+          <h1><span>Cut.</span><span class="gold">Colour.</span><span class="cream">Book.</span></h1>
+          <p>High-end hair salon. Women on the Shore first. Men who want a proper cut, yes. Tie dye haircuts when you mean it.</p>
+          <div class="hero-actions">
+            <a class="book" href="#book">Book online</a>
+            <a class="ghost" href="#contact">Call me back</a>
+          </div>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=1600&q=80" width="1600" height="2000" alt="Woman with long wavy pastel lilac hair, an editorial colour result">
+        <figcaption class="stamp">Tie dye energy · still a haircut</figcaption>
+      </figure>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><span>Takapuna · Hairloom · High-end cuts · Colour · Tie dye haircuts · Women &amp; men · Book online · </span></div>
+
+    <section aria-label="Trust">
+      <div class="wrap proof">
+        <article>
+          <h3>We love haircuts. We love clients.</h3>
+          <p>That is the differentiator. Not a slogan on a van — the way the appointment actually feels in Takapuna.</p>
+        </article>
+        <article>
+          <h3>Proof: experience</h3>
+          <p>The work is in the chair. We cut, we colour, we finish it so you can leave.</p>
+        </article>
+        <article>
+          <h3>Local on purpose</h3>
+          <p>North Shore salon. Premium, friendly, and a bit loud on the page — quiet when you sit down.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="work" aria-label="Gallery">
+      <div class="wrap">
+        <h2>Selected work</h2>
+        <p class="lead">Cuts with a line. Colour that can go as far as tie dye. Real salon photographs — not empty boxes.</p>
+        <div class="mosaic" style="margin-top:22px">
+          <figure>
+            <img src="https://images.pexels.com/photos/3065171/pexels-photo-3065171.jpeg?auto=compress&cs=tinysrgb&w=1400" width="1400" height="1800" alt="Brunette hair with bright blonde sections being curled in a salon">
+            <figcaption>Colour contrast</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1470259078422-826894b933aa?auto=format&fit=crop&w=1200&q=80" width="1200" height="1500" alt="Person with vivid rose-pink hair tossed in motion against a pale studio wall">
+            <figcaption>Tie dye</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?auto=format&fit=crop&w=1200&q=80" width="1200" height="1500" alt="Three hairdressers posing with scissors and brushes in a bright studio">
+            <figcaption>The floor people</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.pexels.com/photos/3992873/pexels-photo-3992873.jpeg?auto=compress&cs=tinysrgb&w=1000" width="1000" height="1200" alt="Stylist draping a cape over a client in a salon chair">
+            <figcaption>In the chair</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?auto=compress&cs=tinysrgb&w=1200" width="1200" height="900" alt="Bright salon floor with styling chairs, tall mirrors, and a reception desk">
+            <figcaption>The floor</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" aria-label="Services">
+      <div class="wrap">
+        <h2>Services</h2>
+        <p class="lead">Book the thing you actually want. Time and price confirmed when we see your hair.</p>
+        <div class="svc"><span class="big">01</span><div><h3>Women’s cut</h3><p>The main event. High-end haircut for Takapuna women.</p></div><span class="tag">Primary</span></div>
+        <div class="svc"><span class="big">02</span><div><h3>Men’s cut</h3><p>A proper cut. Same floor, same care, no five-minute special.</p></div><span class="tag">Yes, men</span></div>
+        <div class="svc"><span class="big">03</span><div><h3>Colour</h3><p>Gloss, refresh, or a change — held by a cut, not floating on top.</p></div><span class="tag">Colour</span></div>
+        <div class="svc"><span class="big">04</span><div><h3>Tie dye haircuts</h3><p>When you want colour to show. Creative, still cut properly.</p></div><span class="tag">Go further</span></div>
+      </div>
+    </section>
+
+    <section id="about" aria-label="About">
+      <div class="wrap about">
+        <div class="about-panel">
+          <p class="place" style="color:var(--gold)">About</p>
+          <h2>A Shore salon with a pulse.</h2>
+          <p>Hairloom is a high-end hair salon in Takapuna. No existing site. No imported personality. Premium, local, friendly — and not a tradie brand in pink by accident. Pink is allowed. This is a salon.</p>
+          <p>We cut women’s hair as the core, men’s hair as a proper service, and colour including tie dye haircuts. Experience is the proof. Loving the haircut and the client is the difference.</p>
+        </div>
+        <figure class="offset">
+          <img src="https://images.pexels.com/photos/3992860/pexels-photo-3992860.jpeg?auto=compress&cs=tinysrgb&w=1400" width="1400" height="1600" alt="Hairdresser in a denim apron at a vanity-lit salon station">
+        </figure>
+      </div>
+    </section>
+
+    <section id="pricing" aria-label="Pricing">
+      <div class="wrap">
+        <h2>Pricing, as a guide</h2>
+        <p class="lead">NZD starting points. We confirm when you book — your hair decides the time.</p>
+        <div class="price-grid" style="margin-top:22px">
+          <article><h3>Women’s cut</h3><p class="n">From $145</p><p>Shape, restyle, finish.</p></article>
+          <article><h3>Men’s cut</h3><p class="n">From $75</p><p>A proper cut.</p></article>
+          <article><h3>Colour</h3><p class="n">From $185</p><p>Gloss to a full change.</p></article>
+          <article><h3>Tie dye</h3><p class="n">Ask us</p><p>Booked to the work, not a guess.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes" aria-label="Testimonials">
+      <div class="wrap">
+        <h2>From Takapuna people</h2>
+        <div class="quotes" style="margin-top:22px">
+          <blockquote>“I wanted colour that wasn’t beige. They did a tie dye haircut and still made it sit like a haircut.”<cite>Mae · Takapuna</cite></blockquote>
+          <blockquote>“Booked online, sat down, left with a cut I didn’t have to explain to my partner.”<cite>Laura · Belmont</cite></blockquote>
+          <blockquote>“Men’s cut, no nonsense, actually good. I’ll be back.”<cite>Chris · Takapuna</cite></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="book" aria-label="Book online">
+      <div class="wrap">
+        <div class="book-box">
+          <div>
+            <p class="place">Book online</p>
+            <h2>Take a chair.</h2>
+            <p class="lead">Send the form. We’ll confirm. Prefer a call? Leave your number and Hairloom will ring you.</p>
+          </div>
+          <form id="book-form" action="#book" method="post">
+            <label>Name <input name="name" required autocomplete="name"></label>
+            <label>Email <input type="email" name="email" required autocomplete="email"></label>
+            <label>Phone <input type="tel" name="phone" required autocomplete="tel"></label>
+            <label>Service
+              <select name="service" required>
+                <option value="">Choose</option>
+                <option>Women’s cut</option>
+                <option>Men’s cut</option>
+                <option>Colour</option>
+                <option>Tie dye haircut</option>
+              </select>
+            </label>
+            <label>Preferred day <input name="day"></label>
+            <label>Note <textarea name="note"></textarea></label>
+            <button class="book" type="submit" style="transform:none;justify-self:start">Book online</button>
+          </form>
+          <p class="thanks" id="book-thanks">Got it — we’ll confirm your Takapuna time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Contact">
+      <div class="wrap book-box" style="background:var(--gold)">
+        <div>
+          <p class="place">Contact</p>
+          <h2>Write. We’ll answer.</h2>
+          <p class="lead">Hairloom, Takapuna, Auckland. Instagram and Facebook live here as links. The conversion is still: book online.</p>
+        </div>
+        <form id="contact-form" action="#contact" method="post">
+          <label>Name <input name="name" required autocomplete="name"></label>
+          <label>Email <input type="email" name="email" required autocomplete="email"></label>
+          <label>Phone <input type="tel" name="phone" autocomplete="tel"></label>
+          <label>Message <textarea name="message" required></textarea></label>
+          <button class="book" type="submit" style="transform:none;justify-self:start">Send</button>
+        </form>
+        <p class="thanks" id="contact-thanks">Received from Takapuna’s internet.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>Hairloom · Takapuna</span>
+      <span>
+        <a href="#book">Book online</a> ·
+        <a href="#contact">Contact</a> ·
+        <a href="#social">Instagram</a> ·
+        <a href="#social">Facebook</a>
+      </span>
+      <span id="social">North Shore, Auckland</span>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var toggle = nav.querySelector(".nav-toggle");
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      nav.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          nav.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+      function wire(id, thanks) {
+        var form = document.getElementById(id);
+        var t = document.getElementById(thanks);
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          form.style.display = "none";
+          t.classList.add("show");
+        });
+      }
+      wire("book-form", "book-thanks");
+      wire("contact-form", "contact-thanks");
+    })();
+  </script>
+</body>
+</html>
