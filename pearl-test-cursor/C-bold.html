@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pearl Landscapes — Whole backyard. One crew. Auckland.</title>
+  <meta name="description" content="Bold outdoor builds by Pearl Landscapes. Auckland crew for decking, concrete, fencing, retaining, excavating and planting. Request a quote.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --char: #161616;
+      --ink: #0E0E0E;
+      --paper: #EDECEA;
+      --concrete: #D4D2CD;
+      --yellow: #E8C41A;
+      --yellow-deep: #C9A80E;
+      --green: #1F5C3F;
+      --mute: #5E5C57;
+      --line: rgba(14, 14, 14, 0.12);
+      --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+
+    .pop {
+      opacity: 0;
+      transform: translateY(22px) rotate(-0.4deg);
+      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+    }
+    .pop.in { opacity: 1; transform: none; }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      z-index: 60;
+      inset: 0 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 14px clamp(16px, 3vw, 36px);
+      background: var(--char);
+      color: var(--paper);
+    }
+
+    .brand {
+      font-family: "Schibsted Grotesk", "Space Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      justify-self: start;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      justify-self: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .nav-links a { opacity: 0.72; transition: opacity 0.15s; }
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-right { justify-self: end; display: flex; align-items: center; gap: 12px; }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      height: 40px;
+      padding: 0 16px;
+      background: var(--yellow);
+      color: var(--ink);
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #F0D23A; transform: translateY(-1px); }
+
+    .burger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 5px auto;
+      background: var(--paper);
+    }
+
+    /* ── Hero bold asymmetric ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      min-height: 100svh;
+      padding-top: 68px;
+      background: var(--char);
+      color: var(--paper);
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(28px, 5vw, 56px);
+      border-right: 3px solid var(--yellow);
+    }
+
+    .hero-top {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
+    .hero h1 {
+      font-family: "Schibsted Grotesk", "Space Grotesk", sans-serif;
+      font-weight: 900;
+      font-size: clamp(3.4rem, 8.2vw, 6.8rem);
+      line-height: 0.86;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+      max-width: 8ch;
+      margin-top: 28px;
+    }
+
+    .hero-lead {
+      margin-top: 28px;
+      max-width: 28ch;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      font-weight: 500;
+      color: rgba(237, 236, 234, 0.78);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      padding: 0 22px;
+      background: var(--yellow);
+      color: var(--ink);
+      border: 3px solid var(--yellow);
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+    }
+    .btn:hover { background: #F0D23A; transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--paper); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--paper);
+      border-color: rgba(237,236,234,0.45);
+    }
+    .btn-ghost:hover {
+      border-color: var(--paper);
+      background: transparent;
+      box-shadow: 4px 4px 0 var(--yellow);
+      color: var(--paper);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 48px;
+      border-top: 1px solid rgba(237,236,234,0.16);
+    }
+    .hero-meta strong {
+      display: block;
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .hero-meta span {
+      font-size: 0.78rem;
+      color: rgba(237,236,234,0.55);
+    }
+
+    .hero-visual {
+      position: relative;
+      background: #222;
+      min-height: 520px;
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      filter: contrast(1.05) saturate(0.95);
+    }
+    .hero-stamp {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: var(--yellow);
+      color: var(--ink);
+      padding: 10px 14px;
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+    }
+
+    /* ── Trust bar ── */
+    .trust {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      background: var(--yellow);
+      color: var(--ink);
+      border-bottom: 3px solid var(--ink);
+    }
+    .trust-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: var(--ink);
+      color: var(--yellow);
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .trust-items {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .trust-items div {
+      padding: 18px 20px;
+      border-left: 2px solid rgba(14,14,14,0.15);
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .wrap {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 36px);
+    }
+
+    .section { padding: clamp(64px, 9vw, 104px) 0; }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--yellow);
+      padding: 6px 10px;
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-family: "Schibsted Grotesk", "Space Grotesk", sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      max-width: 12ch;
+    }
+
+    .lede {
+      margin-top: 16px;
+      max-width: 40ch;
+      color: var(--mute);
+      font-weight: 500;
+    }
+
+    /* ── Services zig-zag ── */
+    .svc-board {
+      margin-top: clamp(36px, 5vw, 56px);
+      display: grid;
+      gap: 10px;
+    }
+    .svc-row {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 10px;
+      align-items: stretch;
+    }
+    .svc-row:nth-child(even) { grid-template-columns: 1.15fr 0.85fr; }
+    .svc-row:nth-child(even) .svc-photo { order: 2; }
+    .svc-row:nth-child(even) .svc-copy { order: 1; }
+
+    .svc-photo {
+      position: relative;
+      min-height: 240px;
+      overflow: hidden;
+      background: #222;
+    }
+    .svc-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+    .svc-row:hover .svc-photo img { transform: scale(1.05); }
+
+    .svc-copy {
+      background: var(--concrete);
+      padding: clamp(24px, 4vw, 40px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 3px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .svc-row:hover .svc-copy {
+      border-color: var(--ink);
+      background: #E0DED8;
+    }
+    .svc-copy h3 {
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .svc-copy p {
+      color: var(--mute);
+      max-width: 42ch;
+      font-weight: 500;
+    }
+    .svc-tag {
+      margin-top: 16px;
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    /* ── Story band ── */
+    .story {
+      background: var(--ink);
+      color: var(--paper);
+      padding: clamp(64px, 9vw, 104px) 0;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 5vw, 56px);
+      align-items: center;
+    }
+    .story h2 { color: var(--paper); }
+    .story .lede { color: rgba(237,236,234,0.65); }
+    .story-list {
+      list-style: none;
+      margin-top: 28px;
+      display: grid;
+      gap: 12px;
+    }
+    .story-list li {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      font-weight: 500;
+      color: rgba(237,236,234,0.82);
+    }
+    .story-list b {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: var(--yellow);
+      color: var(--ink);
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 900;
+    }
+    .story-photo {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      background: #222;
+      transform: rotate(1.2deg);
+      border: 3px solid var(--yellow);
+    }
+    .story-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ── Work mosaic ── */
+    .mosaic {
+      margin-top: clamp(36px, 5vw, 56px);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 10px;
+    }
+    .mosaic figure {
+      position: relative;
+      overflow: hidden;
+      background: #222;
+      color: var(--paper);
+    }
+    .mosaic figure:first-child {
+      grid-row: 1 / span 2;
+    }
+    .mosaic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+    .mosaic figure:hover img { transform: scale(1.06); }
+    .mosaic figcaption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 56px 16px 14px;
+      background: linear-gradient(180deg, transparent, rgba(14,14,14,0.85));
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Quote ── */
+    .quote {
+      background: var(--green);
+      color: var(--paper);
+      padding: clamp(64px, 9vw, 104px) 0;
+      border-top: 3px solid var(--ink);
+    }
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(28px, 5vw, 56px);
+      align-items: start;
+    }
+    .quote h2 { color: var(--paper); max-width: 10ch; }
+    .quote .lede { color: rgba(237,236,234,0.72); }
+    .quote .eyebrow {
+      background: var(--yellow);
+      color: var(--ink);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 22px;
+      border: 3px solid var(--ink);
+    }
+    .full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      font-family: "Schibsted Grotesk", sans-serif;
+      font-weight: 800;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    input, select, textarea {
+      width: 100%;
+      background: #FFF;
+      border: 2px solid var(--ink);
+      padding: 12px 12px;
+      outline: none;
+      border-radius: 0;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--yellow-deep);
+      box-shadow: 3px 3px 0 var(--yellow);
+    }
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+    .note { font-size: 0.82rem; color: var(--mute); font-weight: 500; }
+
+    footer {
+      background: var(--char);
+      color: var(--paper);
+      padding: 28px clamp(16px, 3vw, 36px) 40px;
+      border-top: 3px solid var(--yellow);
+    }
+    .footer-row {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+    }
+    footer .brand { font-size: 1rem; }
+    .footer-meta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    @media (max-width: 960px) {
+      .nav { grid-template-columns: 1fr auto; }
+      .nav-links { display: none; }
+      .nav.open .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--char);
+        padding: 16px 20px 24px;
+        gap: 12px;
+        border-bottom: 3px solid var(--yellow);
+      }
+      .burger { display: block; }
+      .nav-cta { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-copy { border-right: 0; border-bottom: 3px solid var(--yellow); }
+      .hero-visual { min-height: 360px; }
+      .hero-meta { grid-template-columns: 1fr; }
+      .trust { grid-template-columns: 1fr; }
+      .trust-items { grid-template-columns: 1fr 1fr; }
+      .trust-items div { border-left: 0; border-top: 2px solid rgba(14,14,14,0.12); }
+      .svc-row, .svc-row:nth-child(even), .story-grid, .quote-grid { grid-template-columns: 1fr; }
+      .svc-row:nth-child(even) .svc-photo,
+      .svc-row:nth-child(even) .svc-copy { order: initial; }
+      .mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .mosaic figure:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 320px;
+      }
+      .mosaic figure { min-height: 220px; }
+      form { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .trust-items { grid-template-columns: 1fr; }
+      .mosaic { grid-template-columns: 1fr; }
+      .btn, .btn-ghost { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .pop { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <a class="brand" href="#top">Pearl Landscapes</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#crew">Crew</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#quote">Quote</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="#quote">Request a quote</a>
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Bold hero">
+      <div class="hero-copy">
+        <div>
+          <p class="hero-top">Auckland · Soft &amp; hard landscape</p>
+          <h1>Pearl Landscapes</h1>
+          <p class="hero-lead">Whole backyard. One crew. Decks, walls, concrete, fencing and planting — built like a job, not a brochure.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#quote">Request a quote</a>
+            <a class="btn btn-ghost" href="#work">See the builds</a>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <div><strong>Install</strong><span>Not design-only</span></div>
+          <div><strong>Local</strong><span>Auckland sites</span></div>
+          <div><strong>Quote</strong><span>Clear before dig</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img
+          src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&amp;fit=crop&amp;w=1600&amp;q=82"
+          alt="Bold outdoor living build with concrete, timber and planting"
+          width="1600"
+          height="1200">
+        <span class="hero-stamp">Built work</span>
+      </div>
+    </section>
+
+    <section class="trust" aria-label="Trust">
+      <div class="trust-label">Why Pearl</div>
+      <div class="trust-items">
+        <div>One crew on the full outdoor build</div>
+        <div>Hard landscape before soft finish</div>
+        <div>Auckland access planned in</div>
+        <div>Quote with scope — no guesswork</div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="pop">
+          <span class="eyebrow">Services</span>
+          <h2>What we put in the ground.</h2>
+          <p class="lede">Home owners hire us when the backyard needs a crew that can excavate, structure and finish — not a weekend tidy.</p>
+        </div>
+
+        <div class="svc-board">
+          <article class="svc-row pop">
+            <figure class="svc-photo">
+              <img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Finished timber deck off a residential home" width="1200" height="800">
+            </figure>
+            <div class="svc-copy">
+              <h3>Decking</h3>
+              <p>Hardwood and composite decks set true — posts, bearers, boards, balustrades. Walk on it the week we finish.</p>
+              <span class="svc-tag">Hard landscape</span>
+            </div>
+          </article>
+
+          <article class="svc-row pop">
+            <figure class="svc-photo">
+              <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Stone retaining and structured garden levels" width="1200" height="800">
+            </figure>
+            <div class="svc-copy">
+              <h3>Retaining &amp; block</h3>
+              <p>Timber and block walls that hold the cut. Drain, backfill, level — then plant. Structure first.</p>
+              <span class="svc-tag">Structure</span>
+            </div>
+          </article>
+
+          <article class="svc-row pop">
+            <figure class="svc-photo">
+              <img src="https://images.unsplash.com/photo-1600047509358-9dc75507daeb?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Concrete paving path with fence and planted edge" width="1200" height="800">
+            </figure>
+            <div class="svc-copy">
+              <h3>Concrete &amp; fencing</h3>
+              <p>Paths, pads, steps. Boundary and screen fences posted to the line. Clean edges, straight rails.</p>
+              <span class="svc-tag">Hard landscape</span>
+            </div>
+          </article>
+
+          <article class="svc-row pop">
+            <figure class="svc-photo">
+              <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Planted garden beds with path through residential landscape" width="1200" height="800">
+            </figure>
+            <div class="svc-copy">
+              <h3>Excavate · soil · plant</h3>
+              <p>Cut and fill, soiling, mulching and planting after the hard work is locked. Soft landscape on a built site.</p>
+              <span class="svc-tag">Soft landscape</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="crew">
+      <div class="wrap">
+        <div class="story-grid">
+          <div class="pop">
+            <span class="eyebrow">The crew</span>
+            <h2>Premium work. Tradie talk.</h2>
+            <p class="lede">Pearl Landscapes is straightforward about what we do: residential soft and hard landscape construction across Auckland.</p>
+            <ul class="story-list">
+              <li><b>01</b><span>We quote the whole backyard — dig, structure, finish, plant.</span></li>
+              <li><b>02</b><span>We sequence the job so retaining and concrete land before decking and beds.</span></li>
+              <li><b>03</b><span>We leave a site you can use — not a patchwork of unfinished corners.</span></li>
+            </ul>
+          </div>
+          <figure class="story-photo pop">
+            <img
+              src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&amp;fit=crop&amp;w=1400&amp;q=80"
+              alt="Construction-grade outdoor structure work on a building site"
+              width="1400"
+              height="1050">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="pop">
+          <span class="eyebrow">Selected work</span>
+          <h2>Real builds. No empty boxes.</h2>
+          <p class="lede">Decks, paving, walls and planting from residential jobs — materials you can recognise.</p>
+        </div>
+        <div class="mosaic">
+          <figure class="pop">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&amp;fit=crop&amp;w=1400&amp;q=82" alt="Modern outdoor terrace with landscaping" width="1400" height="1750">
+            <figcaption>Terrace &amp; outdoor floor</figcaption>
+          </figure>
+          <figure class="pop">
+            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Garden path through dense planting" width="1000" height="750">
+            <figcaption>Path &amp; planting</figcaption>
+          </figure>
+          <figure class="pop">
+            <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Structured lawn and garden beds" width="1000" height="750">
+            <figcaption>Lawn &amp; beds</figcaption>
+          </figure>
+          <figure class="pop">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Courtyard with paving and planting" width="1000" height="750">
+            <figcaption>Courtyard finish</figcaption>
+          </figure>
+          <figure class="pop">
+            <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Planting into prepared soil beds" width="1000" height="750">
+            <figcaption>Soil &amp; plant</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote" id="quote">
+      <div class="wrap">
+        <div class="quote-grid">
+          <div class="pop">
+            <span class="eyebrow">Next</span>
+            <h2>Request a quote</h2>
+            <p class="lede">Suburb, scope, access. We come back with a clear number. Pearl Landscapes — Auckland crew energy, premium finish.</p>
+          </div>
+          <form class="pop" action="#" method="post">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" required autocomplete="name">
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" required autocomplete="tel">
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email">
+            </div>
+            <div>
+              <label for="suburb">Suburb</label>
+              <input id="suburb" name="suburb" placeholder="e.g. Grey Lynn" required>
+            </div>
+            <div class="full">
+              <label for="job">Job type</label>
+              <select id="job" name="job">
+                <option>Full outdoor build</option>
+                <option>Decking</option>
+                <option>Retaining / block walls</option>
+                <option>Concrete</option>
+                <option>Fencing</option>
+                <option>Excavating</option>
+                <option>Planting / mulching</option>
+              </select>
+            </div>
+            <div class="full">
+              <label for="notes">Notes</label>
+              <textarea id="notes" name="notes" placeholder="What needs building, site quirks, timing."></textarea>
+            </div>
+            <div class="full form-actions">
+              <button class="btn" type="submit">Request a quote</button>
+              <span class="note">We reply within two working days.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-row">
+      <a class="brand" href="#top">Pearl Landscapes</a>
+      <p class="footer-meta">Auckland · Decking · Concrete · Fencing · Retaining · Planting · Excavating</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.getElementById('nav');
+      var burger = nav.querySelector('.burger');
+      burger.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          nav.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+        });
+      });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.pop').forEach(function (el) { io.observe(el); });
+      } else {
+        document.querySelectorAll('.pop').forEach(function (el) { el.classList.add('in'); });
+      }
+    })();
+  </script>
+</body>
+</html>
