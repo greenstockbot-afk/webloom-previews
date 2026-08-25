@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pearl Landscapes — Built for Auckland backyards</title>
+  <meta name="description" content="Pearl Landscapes constructs complete residential outdoor spaces in Auckland — decks, walls, concrete, fencing, excavation and planting. Request a quote from a crew that builds the lot.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void: #080a0c;
+      --deep: #11161b;
+      --panel: #181f26;
+      --text: #e8eaed;
+      --dim: rgba(232, 234, 237, 0.58);
+      --line: rgba(232, 234, 237, 0.1);
+      --steel: #5a7a94;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--void);
+      color: var(--text);
+      font-family: Outfit, system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 20px clamp(20px, 4vw, 48px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: linear-gradient(180deg, rgba(8, 10, 12, 0.85) 0%, transparent 100%);
+      transition: background 0.4s var(--ease);
+    }
+
+    .nav.scrolled {
+      background: rgba(8, 10, 12, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mark {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 3vw, 36px);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dim);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 24px;
+      border: 1px solid var(--steel);
+      background: rgba(90, 122, 148, 0.15);
+      color: var(--text);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s var(--ease), border-color 0.3s;
+    }
+
+    .btn:hover {
+      background: rgba(90, 122, 148, 0.35);
+      border-color: var(--text);
+    }
+
+    .btn-solid {
+      background: var(--text);
+      color: var(--void);
+      border-color: var(--text);
+    }
+
+    .btn-solid:hover {
+      background: transparent;
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      transform: scale(1.08);
+      animation: kenburns 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes kenburns {
+      from { transform: scale(1.08); }
+      to { transform: scale(1.14); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 10, 12, 0.45) 0%, transparent 35%, rgba(8, 10, 12, 0.25) 65%, rgba(8, 10, 12, 0.92) 100%),
+        linear-gradient(90deg, rgba(8, 10, 12, 0.55) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 140px clamp(20px, 4vw, 48px) 72px;
+    }
+
+    .hero-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 0.2s forwards;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      max-width: 12ch;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 0.35s forwards;
+    }
+
+    .hero-sub {
+      margin-top: 24px;
+      max-width: 40ch;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--dim);
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 0.5s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease) 0.65s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      right: clamp(20px, 4vw, 48px);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .scroll-hint::after {
+      content: "";
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(var(--steel), transparent);
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* Trust strip */
+    .trust {
+      background: var(--deep);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 28px clamp(20px, 4vw, 48px);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .trust-item span {
+      display: block;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--steel);
+      margin-bottom: 4px;
+    }
+
+    .trust-item p {
+      font-size: 0.78rem;
+      color: var(--dim);
+      line-height: 1.45;
+    }
+
+    /* Sections */
+    .wrap {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 48px);
+    }
+
+    .section {
+      padding: clamp(72px, 12vw, 120px) 0;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+      max-width: 16ch;
+    }
+
+    /* Services — cinematic cards */
+    .services-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 32px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .services-intro p {
+      max-width: 38ch;
+      color: var(--dim);
+      font-weight: 300;
+    }
+
+    .services-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .svc-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1.4fr 120px;
+      gap: 24px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      transition: background 0.35s var(--ease);
+    }
+
+    .svc-row:hover {
+      background: rgba(90, 122, 148, 0.06);
+      padding-left: 12px;
+      padding-right: 12px;
+      margin: 0 -12px;
+    }
+
+    .svc-num {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--steel);
+    }
+
+    .svc-row h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .svc-row p {
+      font-size: 0.9rem;
+      color: var(--dim);
+      font-weight: 300;
+    }
+
+    .svc-thumb {
+      width: 120px;
+      height: 72px;
+      overflow: hidden;
+    }
+
+    .svc-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.85);
+      transition: transform 0.5s var(--ease);
+    }
+
+    .svc-row:hover .svc-thumb img { transform: scale(1.08); }
+
+    /* Story */
+    .story {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .story-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .story-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.35) saturate(0.9);
+    }
+
+    .story-panel {
+      position: relative;
+      z-index: 2;
+      width: min(520px, 100%);
+      margin-left: clamp(20px, 8vw, 80px);
+      padding: 48px 40px;
+      background: rgba(17, 22, 27, 0.82);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--line);
+    }
+
+    .story-panel p {
+      margin-top: 18px;
+      color: var(--dim);
+      font-weight: 300;
+    }
+
+    .story-panel p:first-of-type { margin-top: 0; }
+
+    /* Work gallery */
+    .work-scroll {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+    }
+
+    .work-item:first-child {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    .work-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease), filter 0.5s;
+      filter: brightness(0.88);
+    }
+
+    .work-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .work-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 48px 20px 20px;
+      background: linear-gradient(transparent, rgba(8, 10, 12, 0.85));
+    }
+
+    .work-label h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .work-label p {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-top: 4px;
+    }
+
+    /* Quote */
+    .quote {
+      background: var(--panel);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
+    }
+
+    .quote-grid .lead {
+      margin-top: 20px;
+      color: var(--dim);
+      font-weight: 300;
+      max-width: 36ch;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 8px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: rgba(8, 10, 12, 0.5);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--steel);
+    }
+
+    select option { background: var(--deep); }
+
+    textarea { min-height: 100px; resize: vertical; }
+
+    .form-foot {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .form-foot small {
+      font-size: 0.75rem;
+      color: var(--dim);
+    }
+
+    /* Footer */
+    footer {
+      padding: 36px clamp(20px, 4vw, 48px) 48px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .trust-inner { grid-template-columns: 1fr 1fr; }
+      .svc-row { grid-template-columns: 1fr; gap: 12px; }
+      .svc-thumb { width: 100%; height: 160px; }
+      .story-panel { margin: 40px 20px; }
+      .work-scroll { grid-template-columns: 1fr; }
+      .work-item:first-child { grid-row: auto; aspect-ratio: 4/3; }
+      .quote-grid, form { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-bg img, .hero-tag, h1, .hero-sub, .hero-cta { animation: none; opacity: 1; }
+      .scroll-hint::after { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a class="mark" href="#top">Pearl Landscapes</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#story">Story</a></li>
+        <li><a href="#work">Work</a></li>
+      </ul>
+      <a class="btn" href="#quote">Request a quote</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&amp;fit=crop&amp;w=2000&amp;q=80"
+        alt=""
+        width="2000" height="1200">
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Auckland landscape construction</p>
+      <h1>Where the ground becomes your place.</h1>
+      <p class="hero-sub">From excavation to the last board on the deck — Pearl Landscapes builds the full backyard for home owners who want one capable crew on site.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#quote">Request a quote</a>
+        <a class="btn" href="#work">See our work</a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scroll</div>
+  </header>
+
+  <section class="trust" aria-label="Trust signals">
+    <div class="trust-inner">
+      <div class="trust-item reveal">
+        <span>15+</span>
+        <p>Years building Auckland residential outdoor spaces</p>
+      </div>
+      <div class="trust-item reveal">
+        <span>Full scope</span>
+        <p>Soft and hard landscape under one quote</p>
+      </div>
+      <div class="trust-item reveal">
+        <span>On site</span>
+        <p>Our crew — not subbed out to strangers</p>
+      </div>
+      <div class="trust-item reveal">
+        <span>Guaranteed</span>
+        <p>Workmanship warranty on every build</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="services-intro reveal">
+        <div>
+          <p class="section-label">Services</p>
+          <h2 class="section-title">Everything the backyard needs.</h2>
+        </div>
+        <p>Decking, concrete, retaining, fencing, excavation, planting — priced separately or as one integrated build. No hand-offs between trades.</p>
+      </div>
+      <div class="services-stack">
+        <article class="svc-row reveal">
+          <span class="svc-num">01</span>
+          <h3>Decking</h3>
+          <p>Timber and composite decks engineered for Auckland weather. Posts, bearers, boards, balustrades — finished and ready to use.</p>
+          <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="Deck construction" loading="lazy"></div>
+        </article>
+        <article class="svc-row reveal">
+          <span class="svc-num">02</span>
+          <h3>Retaining walls</h3>
+          <p>Block, timber, and concrete retaining that holds the bank. Ag-line, backfill, compaction — structure before aesthetics.</p>
+          <div class="svc-thumb"><img src="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300" alt="Retaining wall" loading="lazy"></div>
+        </article>
+        <article class="svc-row reveal">
+          <span class="svc-num">03</span>
+          <h3>Concrete &amp; paving</h3>
+          <p>Paths, driveways, steps, and exposed aggregate. Formed, poured, and finished with clean edges that drain properly.</p>
+          <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="Concrete path" loading="lazy"></div>
+        </article>
+        <article class="svc-row reveal">
+          <span class="svc-num">04</span>
+          <h3>Fencing</h3>
+          <p>Boundary, pool, and privacy fencing. Posts set in concrete, rails true, gates that swing square.</p>
+          <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82f?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="Fence line" loading="lazy"></div>
+        </article>
+        <article class="svc-row reveal">
+          <span class="svc-num">05</span>
+          <h3>Excavation</h3>
+          <p>Cut and fill, trenching, and site prep. Machine work with hand finish around foundations and existing structures.</p>
+          <div class="svc-thumb"><img src="https://images.unsplash.com/photo-1581094794329-cd810b0f0b9b?auto=format&amp;fit=crop&amp;w=300&amp;q=70" alt="Site excavation" loading="lazy"></div>
+        </article>
+        <article class="svc-row reveal">
+          <span class="svc-num">06</span>
+          <h3>Planting &amp; soil</h3>
+          <p>Topsoil, mulch, hedges, and specimen planting after the hardscape is locked in. Gardens that survive Auckland clay.</p>
+          <div class="svc-thumb"><img src="https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300" alt="Fresh lawn and planting" loading="lazy"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="story-bg" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1600047509358-9dc75507daeb?auto=format&amp;fit=crop&amp;w=1800&amp;q=80"
+        alt=""
+        width="1800" height="1000">
+    </div>
+    <div class="story-panel reveal">
+      <p class="section-label">Our story</p>
+      <h2 class="section-title">A crew that stays until it is finished.</h2>
+      <p>Pearl Landscapes started because home owners were tired of coordinating five different trades for one backyard. Digging here, decking there, a fencer who never showed — we built a team that does the lot.</p>
+      <p>We are Auckland locals. We know the clay, the council rules, and the access headaches on a steep Ponsonby section. We quote honestly, turn up on time, and leave a site you can actually live in.</p>
+      <p style="margin-top:24px;"><a class="btn" href="#quote">Start with a quote</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <p class="section-label reveal">Selected work</p>
+      <h2 class="section-title reveal" style="margin-bottom:40px;">Proof in the build.</h2>
+      <div class="work-scroll">
+        <figure class="work-item reveal">
+          <img
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+            alt="Outdoor patio with timber decking and planted borders"
+            width="600" height="900" loading="lazy">
+          <figcaption class="work-label">
+            <h3>Ponsonby patio &amp; deck</h3>
+            <p>Decking · concrete · planting</p>
+          </figcaption>
+        </figure>
+        <figure class="work-item reveal">
+          <img
+            src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+            alt="Residential property with landscaped front garden"
+            width="400" height="500" loading="lazy">
+          <figcaption class="work-label">
+            <h3>North Shore front rebuild</h3>
+            <p>Retaining · lawn · fence</p>
+          </figcaption>
+        </figure>
+        <figure class="work-item reveal">
+          <img
+            src="https://images.unsplash.com/photo-1613490493679-6fc270c51bf3?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+            alt="Modern backyard with deck and garden beds"
+            width="400" height="500" loading="lazy">
+          <figcaption class="work-label">
+            <h3>Mt Eden full backyard</h3>
+            <p>Excavation · walls · deck</p>
+          </figcaption>
+        </figure>
+        <figure class="work-item reveal">
+          <img
+            src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+            alt="Backyard landscaping with paved area and garden"
+            width="400" height="500" loading="lazy">
+          <figcaption class="work-label">
+            <h3>Block wall &amp; paving</h3>
+            <p>Block walls · paving · mulch</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section quote" id="quote">
+    <div class="wrap quote-grid">
+      <div class="reveal">
+        <p class="section-label">Get started</p>
+        <h2 class="section-title">Request a quote.</h2>
+        <p class="lead">Tell us your suburb and what needs building. We will arrange a site visit and send a clear, itemised quote — usually within a week.</p>
+      </div>
+      <form class="reveal" action="#" method="post">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </div>
+        <div>
+          <label for="suburb">Suburb</label>
+          <input id="suburb" name="suburb" type="text" placeholder="Auckland">
+        </div>
+        <div class="full">
+          <label for="work">What to build</label>
+          <select id="work" name="work">
+            <option>Full outdoor build</option>
+            <option>Decking</option>
+            <option>Retaining walls</option>
+            <option>Concrete &amp; paving</option>
+            <option>Fencing</option>
+            <option>Excavation</option>
+            <option>Planting &amp; soil</option>
+          </select>
+        </div>
+        <div class="full">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" placeholder="Site access, slope, timing."></textarea>
+        </div>
+        <div class="full form-foot">
+          <button class="btn btn-solid" type="submit">Request a quote</button>
+          <small>Pearl Landscapes · Auckland</small>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span class="mark">Pearl Landscapes</span>
+    <p>Soft &amp; hard landscape · Auckland · Request a quote</p>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      window.addEventListener("scroll", function () {
+        nav.classList.toggle("scrolled", window.scrollY > 60);
+      }, { passive: true });
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var els = document.querySelectorAll(".reveal");
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
