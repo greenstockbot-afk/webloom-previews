@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pearl Landscapes — Auckland Landscaping Contractors</title>
+  <meta name="description" content="Pearl Landscapes builds complete residential backyards across Auckland. Decking, concrete, fencing, retaining walls, planting, and excavation. One crew, one quote. Request yours today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #181818;
+      --yellow: #F4C300;
+      --white: #FFFFFF;
+      --offwhite: #F2F0EC;
+      --green: #1D3B17;
+      --grey: #454540;
+      --light-grey: #E8E6E0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 2px solid var(--charcoal);
+      padding: 0 56px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: height .3s ease;
+    }
+    .nav-logo {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color .25s ease;
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-cta {
+      background: var(--yellow) !important;
+      color: var(--charcoal) !important;
+      padding: 10px 24px !important;
+      transition: background .25s ease !important;
+    }
+    .nav-cta:hover { background: #e0b200 !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      gap: 5px;
+      padding: 4px;
+      z-index: 102;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--charcoal);
+      transition: all .3s ease;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 64px;
+      position: relative;
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    .hero-img-wrap {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(24,24,24,.88) 0%,
+        rgba(24,24,24,.65) 50%,
+        rgba(24,24,24,.18) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 72px 56px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      max-width: 900px;
+    }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: boldUp .7s .2s ease forwards;
+    }
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--yellow);
+    }
+    .hero-headline {
+      font-size: clamp(52px, 8vw, 108px);
+      font-weight: 700;
+      line-height: .96;
+      color: var(--white);
+      letter-spacing: -.03em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: boldUp .8s .4s ease forwards;
+    }
+    .hero-headline .yellow { color: var(--yellow); }
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      opacity: 0;
+      animation: boldUp .8s .65s ease forwards;
+    }
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,.7);
+      max-width: 420px;
+      line-height: 1.65;
+    }
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    @keyframes boldUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-yellow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--charcoal);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      transition: background .25s ease;
+      white-space: nowrap;
+    }
+    .btn-yellow:hover { background: #e0b200; }
+    .btn-yellow svg { flex-shrink: 0; }
+
+    .btn-white-outline {
+      display: inline-flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      text-decoration: none;
+      gap: 8px;
+      transition: color .25s ease;
+    }
+    .btn-white-outline:hover { color: var(--white); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1320px; margin: 0 auto; padding: 0 56px; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--charcoal);
+      padding: 20px 56px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .trust-bar::-webkit-scrollbar { display: none; }
+    .tb-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      padding: 0 40px;
+      border-right: 1px solid rgba(255,255,255,.12);
+    }
+    .tb-item:first-child { padding-left: 0; }
+    .tb-item:last-child { border-right: none; }
+    .tb-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+      letter-spacing: -.03em;
+    }
+    .tb-text {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      line-height: 1.4;
+    }
+    .tb-tag {
+      margin-left: auto;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      padding-right: 0;
+    }
+    .tb-tag::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--charcoal);
+      padding: 100px 0 80px;
+    }
+    .services-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 64px;
+    }
+    .services-head-left {}
+    .s-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 14px;
+    }
+    .s-title {
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--white);
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+      max-width: 560px;
+    }
+    .s-intro {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,.45);
+      line-height: 1.75;
+      max-width: 340px;
+      padding-bottom: 4px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      background: rgba(255,255,255,.03);
+      padding: 40px 36px 36px;
+      border-top: 3px solid transparent;
+      transition: all .3s ease;
+      cursor: default;
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,.06);
+      border-top-color: var(--yellow);
+    }
+    .sc-num {
+      font-size: 64px;
+      font-weight: 700;
+      color: rgba(255,255,255,.06);
+      line-height: 1;
+      margin-bottom: 20px;
+      letter-spacing: -.04em;
+      transition: color .3s ease;
+    }
+    .service-card:hover .sc-num { color: rgba(244,195,0,.12); }
+    .sc-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+      margin-bottom: 12px;
+    }
+    .sc-desc {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,.45);
+      line-height: 1.75;
+    }
+    .sc-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(244,195,0,.6);
+      margin-top: 24px;
+      text-decoration: none;
+      transition: color .25s ease;
+    }
+    .service-card:hover .sc-arrow { color: var(--yellow); }
+
+    /* ── WORK ── */
+    .work { padding: 100px 0; background: var(--offwhite); }
+    .work-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .work-head .s-title { color: var(--charcoal); max-width: none; }
+    .work-head .s-eyebrow { color: var(--charcoal); opacity: .5; }
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 6px;
+    }
+    .work-feature { grid-row: 1 / 3; }
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--light-grey);
+    }
+    .work-item img {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: transform .55s ease;
+    }
+    .work-feature img { min-height: 580px; }
+    .work-item:hover img { transform: scale(1.04); }
+    .work-tag {
+      position: absolute;
+      top: 20px; left: 20px;
+      background: var(--yellow);
+      color: var(--charcoal);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+    }
+    .work-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px 22px 20px;
+      background: linear-gradient(to top, rgba(24,24,24,.82), transparent);
+    }
+    .work-label h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+      margin-bottom: 3px;
+    }
+    .work-label p {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+    }
+
+    /* ── STATEMENT ── */
+    .statement {
+      padding: 100px 0;
+      background: var(--white);
+      border-top: 2px solid var(--charcoal);
+      border-bottom: 2px solid var(--charcoal);
+    }
+    .statement-inner { max-width: 960px; }
+    .statement-text {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -.025em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
+    .statement-text .highlight {
+      background: var(--yellow);
+      padding: 0 4px;
+    }
+    .statement-text .muted { color: rgba(24,24,24,.28); }
+    .statement-footer {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-top: 52px;
+      flex-wrap: wrap;
+    }
+    .statement-detail {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+    .statement-divider {
+      width: 1px;
+      height: 16px;
+      background: var(--light-grey);
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--yellow);
+      padding: 80px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      padding: 0 40px;
+      border-right: 2px solid rgba(24,24,24,.12);
+      text-align: left;
+    }
+    .stat-item:first-child { padding-left: 0; }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: clamp(52px, 7vw, 88px);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(24,24,24,.55);
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    /* ── ABOUT ── */
+    .about { padding: 100px 0; background: var(--green); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-img {
+      position: relative;
+    }
+    .about-img img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      background: var(--yellow);
+      color: var(--charcoal);
+      padding: 16px 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+    .about-text {}
+    .about-text .s-eyebrow { color: var(--yellow); margin-bottom: 12px; }
+    .about-title {
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .about-body {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,.6);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .about-body:last-of-type { margin-bottom: 0; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 100px 0; background: var(--offwhite); }
+    .testi-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 56px;
+    }
+    .testi-head .s-title { color: var(--charcoal); }
+    .testi-head .s-eyebrow { color: rgba(24,24,24,.5); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+    .testi-card {
+      background: var(--white);
+      padding: 40px 36px;
+      border-top: 3px solid var(--charcoal);
+      transition: border-top-color .3s ease;
+    }
+    .testi-card:hover { border-top-color: var(--yellow); }
+    .testi-mark {
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .testi-quote {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .testi-author {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    /* ── CTA ── */
+    .cta {
+      background: var(--yellow);
+      padding: 100px 0;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .cta-left {}
+    .cta-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(24,24,24,.55);
+      margin-bottom: 16px;
+    }
+    .cta-title {
+      font-size: clamp(32px, 4.5vw, 58px);
+      font-weight: 700;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .cta-body {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(24,24,24,.65);
+      line-height: 1.8;
+      margin-bottom: 36px;
+      max-width: 400px;
+    }
+    .cta-checks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cta-check {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: .02em;
+    }
+    .check-box {
+      width: 20px; height: 20px;
+      background: var(--charcoal);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .check-box svg { fill: var(--yellow); }
+
+    .cta-form-wrap {
+      background: var(--charcoal);
+      padding: 48px;
+    }
+    .cta-form { display: flex; flex-direction: column; gap: 22px; }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .cf-group { display: flex; flex-direction: column; gap: 7px; }
+    .cf-group label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.38);
+    }
+    .cf-group input,
+    .cf-group select,
+    .cf-group textarea {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      padding: 13px 16px;
+      outline: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+      transition: border-color .25s ease;
+    }
+    .cf-group input:focus,
+    .cf-group select:focus,
+    .cf-group textarea:focus { border-color: var(--yellow); }
+    .cf-group input::placeholder,
+    .cf-group textarea::placeholder { color: rgba(255,255,255,.2); }
+    .cf-group textarea { resize: none; height: 88px; }
+    .cf-group select {
+      cursor: pointer;
+      color: rgba(255,255,255,.6);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23F4C300'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-color: rgba(255,255,255,.05);
+      padding-right: 36px;
+    }
+    .cf-group select option { background: #181818; }
+    .cf-submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .cf-note { font-size: 11px; font-weight: 400; color: rgba(255,255,255,.28); }
+    .btn-cf-submit {
+      background: var(--yellow);
+      color: var(--charcoal);
+      border: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 15px 40px;
+      cursor: pointer;
+      transition: background .25s ease;
+      white-space: nowrap;
+    }
+    .btn-cf-submit:hover { background: #e0b200; }
+    .btn-cf-submit:disabled { opacity: .6; cursor: default; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,.5);
+      padding: 72px 0 36px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 28px;
+    }
+    .footer-name {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .footer-tagline {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,.32);
+      line-height: 1.75;
+      max-width: 220px;
+    }
+    .footer-yellow-bar {
+      width: 32px;
+      height: 3px;
+      background: var(--yellow);
+      margin-bottom: 20px;
+    }
+    .footer-col h4 {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.28);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-col a {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,.48);
+      text-decoration: none;
+      transition: color .25s ease;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy { font-size: 11px; font-weight: 400; color: rgba(255,255,255,.24); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .container { padding: 0 40px; }
+      nav { padding: 0 40px; }
+      .trust-bar { padding: 20px 40px; }
+      .hero-content { padding: 64px 40px 64px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .stat-item { padding: 0; border-right: none; }
+      .cta-grid { grid-template-columns: 1fr; gap: 56px; }
+      .cta-form-wrap { padding: 40px; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      nav { padding: 0 24px; }
+      .trust-bar { padding: 18px 24px; }
+      .hero-content { padding: 52px 24px 52px; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      .hero-cta-wrap { align-items: flex-start; }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: var(--charcoal);
+        z-index: 101;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links.open a { font-size: 17px; color: rgba(255,255,255,.7); }
+      .nav-links.open .nav-cta { background: var(--yellow); color: var(--charcoal); padding: 12px 28px; }
+      .nav-toggle { display: flex; }
+
+      .services { padding: 72px 0 56px; }
+      .services-head { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .services-grid { grid-template-columns: 1fr; gap: 2px; }
+
+      .work { padding: 72px 0; }
+      .work-head { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .work-feature { grid-row: auto; }
+      .work-feature img, .work-item img { min-height: 280px; height: 280px; }
+
+      .statement { padding: 72px 0; }
+      .statement-footer { flex-direction: column; gap: 16px; }
+      .statement-divider { display: none; }
+
+      .stats { padding: 56px 0; }
+
+      .about { padding: 72px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-badge { right: 0; bottom: 0; }
+
+      .testimonials { padding: 72px 0; }
+      .testi-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .testi-grid { grid-template-columns: 1fr; gap: 4px; }
+
+      .cta { padding: 72px 0; }
+      .cta-form-wrap { padding: 32px 24px; }
+      .cf-row { grid-template-columns: 1fr; }
+      .cf-submit-row { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .btn-cf-submit { width: 100%; text-align: center; }
+
+      footer { padding: 52px 0 28px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 10px; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 44px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">Pearl Landscapes</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?auto=format&fit=crop&w=1920&q=88"
+        alt="Auckland residential backyard landscaping build">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-label">Auckland Landscaping Contractors</div>
+      <h1 class="hero-headline">We build<br>the <span class="yellow">whole</span><br>backyard.</h1>
+      <div class="hero-bottom">
+        <p class="hero-sub">Hard and soft landscaping — decking, concrete, retaining, fencing, planting. One crew, one quote, from first dig to final planted bed.</p>
+        <div class="hero-cta-wrap">
+          <a href="#quote" class="btn-yellow">
+            Request a Quote
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#work" class="btn-white-outline">See Our Work ↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar reveal">
+    <div class="tb-item">
+      <span class="tb-num">12yr</span>
+      <span class="tb-text">In<br>Auckland</span>
+    </div>
+    <div class="tb-item">
+      <span class="tb-num">400+</span>
+      <span class="tb-text">Backyards<br>Built</span>
+    </div>
+    <div class="tb-item">
+      <span class="tb-num">20</span>
+      <span class="tb-text">Person<br>Crew</span>
+    </div>
+    <div class="tb-item">
+      <span class="tb-num">5★</span>
+      <span class="tb-text">Google<br>Rating</span>
+    </div>
+    <div class="tb-tag">Full scope · No sub-contracting · Auckland-wide</div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-head">
+        <div class="reveal">
+          <p class="s-eyebrow">What We Build</p>
+          <h2 class="s-title">Hard &amp; Soft. Start to Finish.</h2>
+        </div>
+        <p class="s-intro reveal d1">We take on the full scope of every residential backyard build — you deal with one crew, one quote, and one timeline.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="sc-num">01</div>
+          <div class="sc-name">Decking</div>
+          <p class="sc-desc">Hardwood, kwila, and composite decking. Structural framing, post setting, balustrade, LBP consent — all included.</p>
+          <a href="#quote" class="sc-arrow">Quote this →</a>
+        </div>
+        <div class="service-card reveal d1">
+          <div class="sc-num">02</div>
+          <div class="sc-name">Concrete</div>
+          <p class="sc-desc">Poured paths, driveways, entertainment areas, and patios. Broom, exposed aggregate, or polished finishes.</p>
+          <a href="#quote" class="sc-arrow">Quote this →</a>
+        </div>
+        <div class="service-card reveal d2">
+          <div class="sc-num">03</div>
+          <div class="sc-name">Fencing</div>
+          <p class="sc-desc">Timber paling, feature timber, steel, and aluminium. Built to boundary standards, posts set in concrete.</p>
+          <a href="#quote" class="sc-arrow">Quote this →</a>
+        </div>
+        <div class="service-card reveal">
+          <div class="sc-num">04</div>
+          <div class="sc-name">Retaining</div>
+          <p class="sc-desc">Concrete block, mortared stone, and timber retaining walls to reshape any Auckland section — structural and decorative.</p>
+          <a href="#quote" class="sc-arrow">Quote this →</a>
+        </div>
+        <div class="service-card reveal d1">
+          <div class="sc-num">05</div>
+          <div class="sc-name">Planting &amp; Soiling</div>
+          <p class="sc-desc">Native and exotic planting programmes with quality topsoil, compost prep, mulching, and maintenance options.</p>
+          <a href="#quote" class="sc-arrow">Quote this →</a>
+        </div>
+        <div class="service-card reveal d2">
+          <div class="sc-num">06</div>
+          <div class="sc-name">Excavation</div>
+          <p class="sc-desc">Full residential earthworks, digger hire, and spoil removal. We have the gear and the crew to move anything.</p>
+          <a href="#quote" class="sc-arrow">Quote this →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="work-head reveal">
+        <div>
+          <p class="s-eyebrow">Selected Projects</p>
+          <h2 class="s-title">Built Across Auckland.</h2>
+        </div>
+        <a href="#quote" class="btn-yellow">Start Your Build</a>
+      </div>
+      <div class="work-grid">
+        <div class="work-item work-feature reveal">
+          <img src="https://images.unsplash.com/photo-1416879595882-63d647ec0bce?auto=format&fit=crop&w=1000&q=82"
+            alt="Remuera complete backyard landscape build">
+          <div class="work-tag">Full Build</div>
+          <div class="work-label">
+            <h4>Remuera Backyard</h4>
+            <p>Retaining · Concrete · Planting</p>
+          </div>
+        </div>
+        <div class="work-item reveal d1">
+          <img src="https://images.unsplash.com/photo-1550639524-a8a5399e6a6f?auto=format&fit=crop&w=800&q=82"
+            alt="Herne Bay kwila deck">
+          <div class="work-tag">Deck</div>
+          <div class="work-label">
+            <h4>Herne Bay Deck</h4>
+            <p>Kwila · Steel Fencing</p>
+          </div>
+        </div>
+        <div class="work-item reveal d2">
+          <img src="https://images.unsplash.com/photo-1491555103944-7c647fd857e6?auto=format&fit=crop&w=800&q=82"
+            alt="Takapuna concrete patio">
+          <div class="work-tag">Concrete</div>
+          <div class="work-label">
+            <h4>Takapuna Patio</h4>
+            <p>Concrete · Paths · Soiling</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="statement">
+    <div class="container">
+      <div class="statement-inner reveal">
+        <p class="statement-text">
+          <span class="highlight">One crew.</span> <span class="muted">One quote.</span> The whole backyard built <span class="highlight">properly.</span> <span class="muted">Hard structure, soft planting,</span> no trade juggling.
+        </p>
+        <div class="statement-footer">
+          <span class="statement-detail">Auckland-based since 2012</span>
+          <div class="statement-divider"></div>
+          <span class="statement-detail">Family owned</span>
+          <div class="statement-divider"></div>
+          <span class="statement-detail">Licensed Building Practitioner</span>
+          <div class="statement-divider"></div>
+          <span class="statement-detail">Fully insured</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-num">12yr</div>
+          <div class="stat-label">Established<br>in Auckland</div>
+        </div>
+        <div class="stat-item reveal d1">
+          <div class="stat-num">400+</div>
+          <div class="stat-label">Residential<br>builds complete</div>
+        </div>
+        <div class="stat-item reveal d2">
+          <div class="stat-num">20</div>
+          <div class="stat-label">Full-time<br>crew members</div>
+        </div>
+        <div class="stat-item reveal d3">
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Google rated<br>Auckland contractor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&w=900&q=82"
+            alt="Pearl Landscapes crew on a residential Auckland build">
+          <div class="about-badge">Auckland<br>Est. 2012</div>
+        </div>
+        <div class="about-text reveal d1">
+          <p class="s-eyebrow">About Pearl Landscapes</p>
+          <h2 class="about-title">Built to handle the whole job.</h2>
+          <p class="about-body">Pearl Landscapes was started to solve a real problem: Auckland homeowners spending months coordinating five separate trades just to get one backyard done. We decided there was a better way.</p>
+          <p class="about-body">Our crew handles every element of a residential build in-house — earthworks, concrete, decking, fencing, retaining, planting. When you work with Pearl, you're dealing with one team from first dig to the last planted native.</p>
+          <p class="about-body">Auckland-based and family owned since 2012. Our crew are full-time employees who have built some of Auckland's best residential backyards. We're proud of the work, and we stand behind it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="testi-head reveal">
+        <div>
+          <p class="s-eyebrow">Client Feedback</p>
+          <h2 class="s-title">What Clients Say.</h2>
+        </div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-mark">"</div>
+          <p class="testi-quote">Pearl turned our unusable slope into a proper outdoor room. One quote, one crew, no dramas — and the result exceeded every expectation.</p>
+          <span class="testi-author">Sarah &amp; Tom K. — Remuera</span>
+        </div>
+        <div class="testi-card reveal d1">
+          <div class="testi-mark">"</div>
+          <p class="testi-quote">Organised, clean on site, and they knew exactly what they were doing from day one. The concrete work and planting came together brilliantly.</p>
+          <span class="testi-author">James M. — Herne Bay</span>
+        </div>
+        <div class="testi-card reveal d2">
+          <div class="testi-mark">"</div>
+          <p class="testi-quote">We'd tried four different trades. Pearl gave us one number and delivered the whole thing. Happy to recommend them to any Auckland homeowner.</p>
+          <span class="testi-author">Rachel O. — Takapuna</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / QUOTE -->
+  <section class="cta" id="quote">
+    <div class="container">
+      <div class="cta-grid">
+        <div class="cta-left reveal">
+          <p class="cta-label">Request a Quote</p>
+          <h2 class="cta-title">Let's Build Your Backyard.</h2>
+          <p class="cta-body">Tell us about your project and we'll arrange a free site visit within the week. No obligation. All Auckland suburbs.</p>
+          <div class="cta-checks">
+            <div class="cta-check">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none"/></svg></div>
+              Free site visit and quote
+            </div>
+            <div class="cta-check">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none"/></svg></div>
+              Full scope, no sub-contracting
+            </div>
+            <div class="cta-check">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none"/></svg></div>
+              Licensed Building Practitioner
+            </div>
+            <div class="cta-check">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4l3 3 5-6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none"/></svg></div>
+              Response within one business day
+            </div>
+          </div>
+        </div>
+        <div class="cta-form-wrap reveal d1">
+          <form class="cta-form" id="quoteForm">
+            <div class="cf-row">
+              <div class="cf-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="First and last name" required>
+              </div>
+              <div class="cf-group">
+                <label for="suburb">Suburb</label>
+                <input type="text" id="suburb" name="suburb" placeholder="e.g. Remuera, Herne Bay" required>
+              </div>
+            </div>
+            <div class="cf-row">
+              <div class="cf-group">
+                <label for="project">Project Type</label>
+                <select id="project" name="project" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Full Backyard Build</option>
+                  <option>Deck</option>
+                  <option>Concrete / Paving</option>
+                  <option>Retaining Wall</option>
+                  <option>Fencing</option>
+                  <option>Planting &amp; Soiling</option>
+                  <option>Excavation</option>
+                  <option>Other / Multiple</option>
+                </select>
+              </div>
+              <div class="cf-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="09 XXX XXXX">
+              </div>
+            </div>
+            <div class="cf-group">
+              <label for="message">Project Description</label>
+              <textarea id="message" name="message" placeholder="Tell us what you're looking to build — section size, scope, any timing requirements."></textarea>
+            </div>
+            <div class="cf-submit-row">
+              <p class="cf-note">All enquiries answered within one business day.</p>
+              <button type="submit" class="btn-cf-submit" id="submitBtn">Send Enquiry</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#" class="footer-name">Pearl Landscapes</a>
+          <div class="footer-yellow-bar"></div>
+          <p class="footer-tagline">Auckland's residential landscaping crew for the complete backyard build.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Decking</a></li>
+            <li><a href="#services">Concrete</a></li>
+            <li><a href="#services">Fencing</a></li>
+            <li><a href="#services">Retaining Walls</a></li>
+            <li><a href="#services">Planting &amp; Soiling</a></li>
+            <li><a href="#services">Excavation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Pearl</a></li>
+            <li><a href="#work">Our Work</a></li>
+            <li><a href="#quote">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:094790000">09 479 0000</a></li>
+            <li><a href="mailto:hello@pearllandscapes.co.nz">hello@pearllandscapes.co.nz</a></li>
+            <li><a href="#">Auckland, New Zealand</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 Pearl Landscapes Ltd. All rights reserved.</p>
+        <p class="footer-copy">Licensed Building Practitioner · Auckland</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    }));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Form
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sent — we\'ll be in touch.';
+      btn.disabled = true;
+    });
+  </script>
+</body>
+</html>
