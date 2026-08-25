@@ -43,10 +43,10 @@
     .nav {
       position: sticky; top: 0; z-index: 40; background: var(--ink); color: var(--cream);
     }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 62px; gap: 16px; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 62px; gap: 12px; min-width: 0; }
     .logo {
       font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.04em;
-      text-decoration: none; display: flex; align-items: baseline; gap: 0;
+      text-decoration: none; display: flex; align-items: baseline; gap: 0; flex-shrink: 0;
     }
     .logo i { color: var(--pink); font-style: normal; }
     .nav-links { display: flex; gap: 16px; list-style: none; font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -193,6 +193,14 @@
       .nav.open .nav-links {
         display: flex; flex-direction: column; position: absolute; inset: 62px 0 auto;
         background: var(--ink); padding: 16px 18px 22px;
+      }
+      header.nav .book {
+        display: inline-flex;
+        transform: none;
+        font-size: 11px;
+        padding: 0 12px;
+        height: 36px;
+        flex-shrink: 0;
       }
       .hero, .proof, .mosaic, .about, .price-grid, .quotes, .book-box { grid-template-columns: 1fr; }
       .mosaic { grid-template-rows: none; }
