@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>gg | After the light fades, the garden stays</title>
+  <meta name="description" content="Immersive local retail for garden and home. Shop curated goods, explore the gallery, book a visit, or request a quote from gg.">
+  <meta property="og:title" content="gg | Curated garden & home">
+  <meta property="og:description" content="Bold local retail with online checkout and booking. Request a quote today.">
+  <meta property="og:image" content="../assets/hero-garden.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23080C14'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23E8B04A'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void: #080C14;
+      --deep: #121A2E;
+      --steel: #8FA3BF;
+      --mist: #C8D0DC;
+      --gold: #E8B04A;
+      --paper: #EEF1F6;
+      --max: 1240px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--void);
+      color: var(--paper);
+      font-family: Outfit, system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; font-weight: 300; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+    .reveal.on { opacity: 1; transform: none; }
+
+    .mast {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px clamp(24px, 5vw, 56px);
+      background: linear-gradient(180deg, rgba(8,12,20,.72) 0%, transparent 100%);
+    }
+    .wordmark {
+      font-family: "Cormorant Infant", Georgia, serif;
+      font-size: 22px; font-weight: 400;
+      letter-spacing: .32em; text-transform: uppercase;
+    }
+    nav { display: flex; gap: 32px; align-items: center; }
+    nav a {
+      font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
+      color: rgba(238,241,246,.7);
+    }
+    nav a:hover { color: var(--paper); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 46px; padding: 0 28px;
+      background: transparent; color: var(--paper);
+      border: 1px solid rgba(238,241,246,.45);
+      font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+      cursor: pointer; transition: all .35s ease;
+    }
+    .btn:hover { background: var(--gold); border-color: var(--gold); color: var(--void); }
+    .btn-fill { background: var(--gold); border-color: var(--gold); color: var(--void); }
+    .btn-fill:hover { background: var(--paper); border-color: var(--paper); }
+
+    .hero {
+      position: relative; min-height: 100vh; min-height: 100dvh;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: var(--deep);
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.04);
+      animation: breathe 18s ease-in-out infinite alternate;
+    }
+    @keyframes breathe {
+      from { transform: scale(1.04); }
+      to { transform: scale(1.1); }
+    }
+    .hero-bg::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(0deg, rgba(8,12,20,.92) 0%, rgba(8,12,20,.35) 42%, rgba(8,12,20,.55) 100%),
+        linear-gradient(90deg, rgba(8,12,20,.7) 0%, transparent 55%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      padding: 0 0 clamp(72px, 10vh, 120px);
+    }
+    .kicker {
+      font-size: 11px; letter-spacing: .36em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    h1 {
+      font-family: "Cormorant Infant", Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(3.5rem, 9vw, 7.2rem);
+      line-height: .92;
+      letter-spacing: -0.02em;
+      max-width: 12ch;
+      margin-bottom: 28px;
+    }
+    h1 em { font-style: italic; color: var(--steel); }
+    .hero-lede { max-width: 40ch; color: rgba(238,241,246,.78); font-size: 1.05rem; margin-bottom: 36px; }
+    .hero-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+
+    .trust-strip {
+      position: relative; z-index: 2;
+      margin-top: -1px;
+      background: var(--deep);
+      border-top: 1px solid rgba(143,163,191,.2);
+      border-bottom: 1px solid rgba(143,163,191,.2);
+    }
+    .trust-inner {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .trust-inner div {
+      padding: 32px 24px;
+      border-right: 1px solid rgba(143,163,191,.15);
+      text-align: center;
+    }
+    .trust-inner div:last-child { border-right: 0; }
+    .trust-inner strong {
+      display: block;
+      font-family: "Cormorant Infant", Georgia, serif;
+      font-size: 2rem; font-weight: 400; color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .trust-inner span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--steel); }
+
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    section { padding: clamp(80px, 12vw, 140px) 0; }
+
+    .intro-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    h2 {
+      font-family: "Cormorant Infant", Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.02;
+      margin-bottom: 24px;
+    }
+    .body-copy { color: rgba(238,241,246,.75); max-width: 44ch; }
+    .body-copy p + p { margin-top: 18px; }
+    .portrait {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .portrait::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(8,12,20,.65) 100%);
+    }
+    .portrait figcaption {
+      position: absolute; left: 24px; bottom: 24px; z-index: 2;
+      font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--mist);
+    }
+
+    .products-scroll {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(143,163,191,.15);
+    }
+    .card {
+      position: relative;
+      background: var(--void);
+      overflow: hidden;
+      min-height: 420px;
+    }
+    .card img {
+      width: 100%; height: 100%; min-height: 280px;
+      object-fit: cover;
+      transition: transform .8s cubic-bezier(.22,1,.36,1);
+    }
+    .card:hover img { transform: scale(1.06); }
+    .card-body {
+      padding: 28px 24px 32px;
+      border-top: 1px solid rgba(143,163,191,.12);
+    }
+    .card-body h3 {
+      font-family: "Cormorant Infant", Georgia, serif;
+      font-size: 1.5rem; font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .card-body p { font-size: 13px; color: var(--steel); }
+    .card-body .price { margin-top: 12px; color: var(--gold); font-size: 12px; letter-spacing: .12em; }
+
+    .atmosphere {
+      position: relative;
+      min-height: 70vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .atmosphere img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: .45;
+    }
+    .atmosphere::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, var(--void) 0%, rgba(8,12,20,.4) 50%, var(--void) 100%);
+    }
+    .atmosphere .wrap { position: relative; z-index: 2; max-width: 520px; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2px;
+    }
+    .gallery figure { margin: 0; position: relative; overflow: hidden; min-height: 280px; }
+    .gallery img { width: 100%; height: 100%; min-height: 280px; object-fit: cover; transition: transform .7s ease; }
+    .gallery figure:hover img { transform: scale(1.04); }
+    .gallery figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 20px;
+      background: linear-gradient(0deg, rgba(8,12,20,.85), transparent);
+      font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    }
+
+    .book-panel {
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px;
+      padding: 64px;
+      background: var(--deep);
+      border: 1px solid rgba(143,163,191,.15);
+    }
+    form { display: grid; gap: 20px; }
+    label { display: grid; gap: 8px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--steel); }
+    input, select, textarea {
+      width: 100%; padding: 14px 16px;
+      background: rgba(8,12,20,.5);
+      border: 1px solid rgba(143,163,191,.25);
+      color: var(--paper);
+    }
+    textarea { min-height: 110px; resize: vertical; }
+
+    .final-cta {
+      text-align: center;
+      padding: clamp(80px, 12vw, 120px) 24px;
+      background: radial-gradient(ellipse at center, var(--deep) 0%, var(--void) 70%);
+    }
+    .final-cta h2 { margin-bottom: 16px; }
+    .final-cta p { max-width: 40ch; margin: 0 auto 32px; color: rgba(238,241,246,.7); }
+
+    footer {
+      padding: 40px clamp(24px, 5vw, 56px);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px;
+      border-top: 1px solid rgba(143,163,191,.15);
+      font-size: 11px; letter-spacing: .12em; color: var(--steel);
+    }
+
+    @media (max-width: 960px) {
+      .intro-split, .book-panel { grid-template-columns: 1fr; }
+      .book-panel { padding: 40px 24px; }
+      .products-scroll { grid-template-columns: 1fr 1fr; }
+      .gallery { grid-template-columns: 1fr; }
+      .trust-inner { grid-template-columns: 1fr 1fr; }
+      nav .hide-m { display: none; }
+    }
+    @media (max-width: 560px) {
+      .products-scroll, .trust-inner { grid-template-columns: 1fr; }
+      .trust-inner div { border-right: 0; border-bottom: 1px solid rgba(143,163,191,.15); }
+    }
+  </style>
+</head>
+<body>
+  <header class="mast">
+    <a class="wordmark" href="#">gg</a>
+    <nav aria-label="Primary">
+      <a class="hide-m" href="#offer">Collection</a>
+      <a class="hide-m" href="#story">Story</a>
+      <a class="hide-m" href="#gallery">Gallery</a>
+      <a class="btn" href="#enquire">Request quote</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-bg">
+      <img src="../assets/hero-garden.jpg" alt="Lush garden at dusk with layered foliage" width="2400" height="1600">
+    </div>
+    <div class="hero-inner reveal">
+      <p class="kicker">Local · Garden & home</p>
+      <h1>Where the <em>garden</em> meets the room.</h1>
+      <p class="hero-lede">gg is a curated shop for people who treat outdoor space like another room. Thirty-eight pieces, online checkout, and consultations when you want a hand choosing.</p>
+      <div class="hero-row">
+        <a class="btn btn-fill" href="#offer">Explore the collection</a>
+        <a class="btn" href="#enquire">Send an enquiry</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-strip" aria-label="Trust signals">
+    <div class="trust-inner">
+      <div class="reveal"><strong>38</strong><span>Pieces curated</span></div>
+      <div class="reveal"><strong>Online</strong><span>Checkout ready</span></div>
+      <div class="reveal"><strong>Book</strong><span>Consultations</span></div>
+      <div class="reveal"><strong>Local</strong><span>Delivery & pickup</span></div>
+    </div>
+  </div>
+
+  <section id="story" class="wrap">
+    <div class="intro-split">
+      <div class="reveal">
+        <p class="kicker">The story</p>
+        <h2>Chosen slowly. Shipped with care.</h2>
+        <div class="body-copy">
+          <p>We started with a handful of tools and planters we actually used — then neighbours started asking. gg grew from that table, not from a trend deck.</p>
+          <p>Every piece in the catalogue passes a simple test: would we keep it for years? If not, it does not ship.</p>
+          <p>Need help styling a corner or choosing a gift? Book a consultation. Prefer to browse alone? The shop is open whenever you are.</p>
+        </div>
+      </div>
+      <figure class="portrait reveal">
+        <img src="../assets/founder.png" alt="Founder of gg in navy cap and shirt among garden foliage" width="1200" height="1500">
+        <figcaption>Founder · gg</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="offer">
+    <div class="wrap reveal" style="margin-bottom:48px">
+      <p class="kicker">The collection</p>
+      <h2>Goods for hands that work the soil.</h2>
+    </div>
+    <div class="products-scroll">
+      <article class="card reveal">
+        <img src="../assets/product-planter.jpg" alt="Terracotta planter" width="1200" height="799">
+        <div class="card-body"><h3>Fieldstone planter</h3><p>Hand-thrown, drainage-ready</p><p class="price">From $68</p></div>
+      </article>
+      <article class="card reveal">
+        <img src="../assets/product-tools.jpg" alt="Garden tool set" width="1200" height="675">
+        <div class="card-body"><h3>Workshop tool set</h3><p>Forged steel, ash handles</p><p class="price">$124</p></div>
+      </article>
+      <article class="card reveal">
+        <img src="../assets/product-chair.jpg" alt="Outdoor lounge chair" width="1200" height="1059">
+        <div class="card-body"><h3>Veranda chair</h3><p>Weather-ready linen</p><p class="price">$289</p></div>
+      </article>
+      <article class="card reveal">
+        <img src="../assets/product-lantern.jpg" alt="Brass lantern" width="1200" height="800">
+        <div class="card-body"><h3>Brass lantern</h3><p>Evening patio light</p><p class="price">$56</p></div>
+      </article>
+      <article class="card reveal">
+        <img src="../assets/product-gift.jpg" alt="Gift box" width="1200" height="829">
+        <div class="card-body"><h3>Garden gift box</h3><p>Seeds, shears, note card</p><p class="price">$48</p></div>
+      </article>
+      <article class="card reveal">
+        <img src="../assets/product-candle.jpg" alt="Hand-poured candle" width="1200" height="1800">
+        <div class="card-body"><h3>Greenhouse candle</h3><p>Cedar & fig leaf</p><p class="price">$32</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="atmosphere" aria-label="Atmosphere">
+    <img src="../assets/gallery-2.jpg" alt="Garden path with structured planting at golden hour" width="1200" height="800">
+    <div class="wrap reveal">
+      <p class="kicker">Why gg</p>
+      <h2>Not a warehouse. A considered shelf.</h2>
+      <p class="body-copy">We reply to enquiries the same day. We pack orders like they are going to someone we know — because often, they are. Local delivery, honest stock counts, and booking when you want a second opinion.</p>
+    </div>
+  </section>
+
+  <section id="gallery" class="wrap">
+    <div class="reveal" style="margin-bottom:40px">
+      <p class="kicker">Gallery</p>
+      <h2>Spaces our customers build.</h2>
+    </div>
+    <div class="gallery reveal">
+      <figure>
+        <img src="../assets/gallery-3.jpg" alt="Modern home with landscaped front garden" width="1200" height="800">
+        <figcaption>Front garden install</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/gallery-1.jpg" alt="Styled patio" width="1200" height="900">
+        <figcaption>Patio refresh</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/hero-garden.jpg" alt="Garden beds" width="2400" height="1600">
+        <figcaption>Planting detail</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="book" class="wrap">
+    <div class="book-panel reveal">
+      <div>
+        <p class="kicker">Online booking</p>
+        <h2>Book a consultation</h2>
+        <p class="body-copy" style="margin-top:16px">Tell us what you are working on — a patio corner, a tool upgrade, or a gift for someone who gardens. We will come prepared.</p>
+      </div>
+      <form action="#" method="post" aria-label="Booking form">
+        <label>Name<input type="text" name="name" autocomplete="name" required></label>
+        <label>Preferred date<input type="date" name="date" required></label>
+        <label>Your project<textarea name="brief" placeholder="Describe your space or what you need…" required></textarea></label>
+        <button class="btn btn-fill" type="submit">Request booking</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="final-cta" id="enquire">
+    <div class="reveal">
+      <p class="kicker">Get in touch</p>
+      <h2>Request a quote</h2>
+      <p>Single piece, full set, or styled install — send an enquiry and we will reply with options from the catalogue.</p>
+      <a class="btn btn-fill" href="#book">Send an enquiry</a>
+    </div>
+  </section>
+
+  <footer>
+    <p class="wordmark" style="font-size:16px">gg</p>
+    <p>Curated garden & home · Online checkout · Local delivery</p>
+    <p>© gg</p>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
