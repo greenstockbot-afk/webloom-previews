@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>gg — Bold local goods. No fuss.</title>
+  <meta name="description" content="gg is bold local retail for garden and home. Shop 38 curated pieces, book online, checkout fast. Get a quote or send an enquiry.">
+  <meta property="og:title" content="gg — Bold local goods">
+  <meta property="og:description" content="Energetic local ecommerce for garden & home. Shop, book, enquire.">
+  <meta property="og:image" content="../assets/product-planter.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FF5A45'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='12' fill='%23111'%3Egg%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coral: #FF5A45;
+      --blue: #1B3BFF;
+      --lime: #C8F135;
+      --paper: #F4F3EF;
+      --ink: #111111;
+      --mute: #5C5C5C;
+      --max: 1280px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; border-radius: 0; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+    .reveal { opacity: 0; transform: translateY(20px) rotate(-0.5deg); transition: opacity .5s ease, transform .5s cubic-bezier(.34,1.4,.64,1); }
+    .reveal.on { opacity: 1; transform: none; }
+
+    .ticker {
+      overflow: hidden;
+      background: var(--ink);
+      color: var(--lime);
+      border-bottom: 3px solid var(--ink);
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: scroll 22s linear infinite;
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .ticker-track span { padding: 12px 28px; white-space: nowrap; }
+    .ticker-track span::after { content: " ◆ "; opacity: .5; }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .mast {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: stretch;
+      border-bottom: 3px solid var(--ink);
+      background: var(--coral);
+    }
+    .wordmark {
+      display: flex; align-items: center;
+      padding: 0 28px;
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: -.06em;
+      text-transform: lowercase;
+      border-right: 3px solid var(--ink);
+      background: var(--lime);
+    }
+    nav {
+      display: flex; align-items: stretch;
+    }
+    nav a {
+      display: flex; align-items: center;
+      padding: 0 22px;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-right: 3px solid var(--ink);
+    }
+    nav a:hover { background: var(--ink); color: var(--lime); }
+    .btn-nav {
+      display: flex; align-items: center;
+      padding: 0 28px;
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      border: 0; cursor: pointer;
+    }
+    .btn-nav:hover { background: var(--blue); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      min-height: min(88vh, 780px);
+      border-bottom: 3px solid var(--ink);
+    }
+    .hero-left {
+      padding: clamp(40px, 6vw, 72px);
+      display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--paper);
+      border-right: 3px solid var(--ink);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--paper);
+      padding: 8px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+      width: fit-content;
+    }
+    h1 {
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.5rem, 10vw, 7.5rem);
+      line-height: .88;
+      letter-spacing: -.05em;
+      text-transform: uppercase;
+      margin: 28px 0;
+    }
+    h1 .gg { color: var(--coral); display: block; font-size: 1.15em; }
+    .hero-lede { max-width: 36ch; font-size: 1.1rem; font-weight: 500; margin-bottom: 32px; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 52px; padding: 0 28px;
+      background: var(--ink); color: var(--paper);
+      border: 3px solid var(--ink);
+      font-weight: 700; font-size: 12px;
+      letter-spacing: .12em; text-transform: uppercase;
+      cursor: pointer; transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--coral); }
+    .btn-alt { background: var(--paper); color: var(--ink); }
+    .btn-alt:hover { box-shadow: 6px 6px 0 var(--blue); }
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--blue);
+    }
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      mix-blend-mode: luminosity;
+      opacity: .92;
+    }
+    .hero-stamp {
+      position: absolute;
+      right: 24px; bottom: 24px;
+      width: 120px; height: 120px;
+      background: var(--lime);
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      text-align: center;
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transform: rotate(12deg);
+      line-height: 1.2;
+    }
+
+    .trust {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 3px solid var(--ink);
+    }
+    .trust div {
+      padding: 24px 20px;
+      border-right: 3px solid var(--ink);
+      text-align: center;
+      background: var(--paper);
+    }
+    .trust div:nth-child(2) { background: var(--lime); }
+    .trust div:nth-child(4) { background: var(--coral); color: var(--ink); }
+    .trust strong {
+      display: block;
+      font-family: Syne, sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .trust span { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    section { padding: clamp(64px, 8vw, 96px) 0; }
+
+    .section-label {
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: clamp(4rem, 12vw, 9rem);
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--ink);
+      line-height: .85;
+      margin-bottom: -24px;
+      pointer-events: none;
+      opacity: .15;
+    }
+    h2 {
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -.04em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .product-mosaic {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+    .tile {
+      position: relative;
+      border: 3px solid var(--ink);
+      overflow: hidden;
+      background: #fff;
+      transition: transform .25s ease;
+    }
+    .tile:hover { transform: rotate(-1deg) scale(1.02); z-index: 2; }
+    .tile img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .tile-info {
+      padding: 14px;
+      border-top: 3px solid var(--ink);
+      background: var(--paper);
+    }
+    .tile-info h3 { font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .04em; }
+    .tile-info p { font-size: 12px; color: var(--mute); margin-top: 2px; }
+    .tile-info .price { font-weight: 700; color: var(--coral); margin-top: 6px; }
+    .t1 { grid-column: span 2; grid-row: span 2; }
+    .t1 img { aspect-ratio: auto; height: 100%; min-height: 360px; }
+    .t2 { grid-column: span 2; }
+    .t3, .t4, .t5, .t6 { grid-column: span 1; }
+
+    .story-block {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 0;
+      border: 3px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .story-img { min-height: 400px; }
+    .story-img img { width: 100%; height: 100%; object-fit: cover; min-height: 400px; }
+    .story-text {
+      padding: clamp(40px, 6vw, 64px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .story-text p { margin-bottom: 16px; max-width: 44ch; opacity: .88; font-size: 1.05rem; }
+    .story-text .lead { font-size: 1.25rem; font-weight: 600; opacity: 1; }
+
+    .gallery-row {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 12px;
+    }
+    .gallery-row figure {
+      margin: 0;
+      border: 3px solid var(--ink);
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-row img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .gallery-row figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 12px 16px;
+      background: var(--lime);
+      border-top: 3px solid var(--ink);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .book-card {
+      padding: 40px;
+      border: 3px solid var(--ink);
+      background: var(--blue);
+      color: var(--paper);
+    }
+    form {
+      display: grid; gap: 16px;
+      padding: 40px;
+      border: 3px solid var(--ink);
+      background: #fff;
+    }
+    label { display: grid; gap: 6px; font-weight: 700; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    input, select, textarea {
+      width: 100%; padding: 12px 14px;
+      border: 3px solid var(--ink);
+      background: var(--paper);
+    }
+    textarea { min-height: 100px; resize: vertical; }
+
+    .cta-final {
+      background: var(--coral);
+      border-top: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
+      padding: clamp(64px, 10vw, 96px) 24px;
+      text-align: center;
+    }
+    .cta-final h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 16px; }
+    .cta-final p { max-width: 40ch; margin: 0 auto 28px; font-weight: 500; font-size: 1.1rem; }
+
+    footer {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 24px clamp(20px, 4vw, 48px);
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    footer nav { display: flex; gap: 20px; justify-content: center; }
+    footer a:hover { color: var(--lime); }
+
+    @media (max-width: 960px) {
+      .hero, .story-block, .book-grid { grid-template-columns: 1fr; }
+      .hero-left { border-right: 0; border-bottom: 3px solid var(--ink); }
+      .product-mosaic { grid-template-columns: 1fr 1fr; }
+      .t1, .t2, .t3, .t4, .t5, .t6 { grid-column: span 1; grid-row: span 1; }
+      .t1 img { min-height: 240px; }
+      .gallery-row { grid-template-columns: 1fr; }
+      .trust { grid-template-columns: 1fr 1fr; }
+      .trust div:nth-child(2) { border-right: 0; }
+      nav .hide-m { display: none; }
+      footer { grid-template-columns: 1fr; text-align: center; gap: 16px; }
+    }
+    @media (max-width: 560px) {
+      .trust, .product-mosaic { grid-template-columns: 1fr; }
+      .mast { grid-template-columns: 1fr; }
+      .wordmark { border-right: 0; border-bottom: 3px solid var(--ink); justify-content: center; }
+      nav { flex-wrap: wrap; }
+      nav a { flex: 1; justify-content: center; border-bottom: 3px solid var(--ink); }
+    }
+  </style>
+</head>
+<body>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>38 curated SKUs</span><span>Online checkout</span><span>Book a visit</span><span>Local delivery</span><span>Same-day replies</span><span>Garden & home</span>
+      <span>38 curated SKUs</span><span>Online checkout</span><span>Book a visit</span><span>Local delivery</span><span>Same-day replies</span><span>Garden & home</span>
+    </div>
+  </div>
+
+  <header class="mast">
+    <a class="wordmark" href="#">gg</a>
+    <nav aria-label="Primary">
+      <a class="hide-m" href="#shop">Shop</a>
+      <a class="hide-m" href="#story">Story</a>
+      <a class="hide-m" href="#gallery">Gallery</a>
+      <a class="hide-m" href="#book">Book</a>
+    </nav>
+    <a class="btn-nav" href="#enquire">Get a quote</a>
+  </header>
+
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-left reveal">
+      <div>
+        <span class="hero-tag">Local retail · Bold & friendly</span>
+        <h1><span class="gg">gg</span>Goods for people who dig in.</h1>
+        <p class="hero-lede">Planters, tools, and home pieces picked by hand — not algorithm. Shop online, book a visit, or fire off an enquiry. We answer fast.</p>
+      </div>
+      <div class="hero-btns">
+        <a class="btn" href="#shop">Shop the catalogue</a>
+        <a class="btn btn-alt" href="#enquire">Send enquiry</a>
+      </div>
+    </div>
+    <div class="hero-right reveal">
+      <img src="../assets/founder.png" alt="Founder of gg in navy cap among garden foliage" width="1200" height="1500">
+      <div class="hero-stamp">Est.<br>local<br>shop</div>
+    </div>
+  </section>
+
+  <div class="trust" aria-label="Trust signals">
+    <div class="reveal"><strong>38</strong><span>SKUs in stock</span></div>
+    <div class="reveal"><strong>Fast</strong><span>Enquiry replies</span></div>
+    <div class="reveal"><strong>Book</strong><span>Online visits</span></div>
+    <div class="reveal"><strong>Local</strong><span>Pickup & delivery</span></div>
+  </div>
+
+  <section id="shop" class="wrap">
+    <p class="section-label reveal" aria-hidden="true">Shop</p>
+    <h2 class="reveal">The catalogue</h2>
+    <p class="reveal" style="max-width:42ch;margin-bottom:32px;font-weight:500">Enough to browse properly. Not so much you lose the plot. Every piece ships from our local shelf.</p>
+    <div class="product-mosaic">
+      <article class="tile t1 reveal">
+        <img src="../assets/product-planter.jpg" alt="Terracotta planter" width="1200" height="799">
+        <div class="tile-info"><h3>Fieldstone planter</h3><p>Hand-thrown</p><p class="price">From $68</p></div>
+      </article>
+      <article class="tile t2 reveal">
+        <img src="../assets/product-tools.jpg" alt="Garden tools" width="1200" height="675">
+        <div class="tile-info"><h3>Workshop set</h3><p>Forged steel</p><p class="price">$124</p></div>
+      </article>
+      <article class="tile t3 reveal">
+        <img src="../assets/product-lantern.jpg" alt="Lantern" width="1200" height="800">
+        <div class="tile-info"><h3>Lantern</h3><p class="price">$56</p></div>
+      </article>
+      <article class="tile t4 reveal">
+        <img src="../assets/product-candle.jpg" alt="Candle" width="1200" height="1800">
+        <div class="tile-info"><h3>Candle</h3><p class="price">$32</p></div>
+      </article>
+      <article class="tile t5 reveal">
+        <img src="../assets/product-gift.jpg" alt="Gift box" width="1200" height="829">
+        <div class="tile-info"><h3>Gift box</h3><p class="price">$48</p></div>
+      </article>
+      <article class="tile t6 reveal">
+        <img src="../assets/product-chair.jpg" alt="Chair" width="1200" height="1059">
+        <div class="tile-info"><h3>Veranda chair</h3><p class="price">$289</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="story" class="wrap">
+    <div class="story-block reveal">
+      <div class="story-img">
+        <img src="../assets/hero-garden.jpg" alt="Lush garden planting" width="2400" height="1600">
+      </div>
+      <div class="story-text">
+        <p class="hero-tag" style="background:var(--coral);color:var(--ink);margin-bottom:20px;width:fit-content">Our story</p>
+        <h2 style="color:var(--lime)">Started at a garden table.</h2>
+        <p class="lead">gg began with tools and planters we actually used. Neighbours asked. We kept sourcing better stuff.</p>
+        <p>Today: 38 pieces we would put in our own homes. No trend-chasing. No landfill fodder. Real replies to real enquiries — same day, every day.</p>
+        <a class="btn" href="#enquire" style="margin-top:12px;width:fit-content;background:var(--lime);color:var(--ink)">Ask us anything</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="wrap">
+    <p class="section-label reveal" aria-hidden="true">Work</p>
+    <h2 class="reveal">Selected installs</h2>
+    <div class="gallery-row reveal" style="margin-top:32px">
+      <figure>
+        <img src="../assets/gallery-1.jpg" alt="Styled patio" width="1200" height="900">
+        <figcaption>Patio refresh</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/gallery-2.jpg" alt="Garden path" width="1200" height="800">
+        <figcaption>Path planting</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/gallery-3.jpg" alt="Front garden" width="1200" height="800">
+        <figcaption>Front garden</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="book" class="wrap">
+    <div class="book-grid">
+      <div class="book-card reveal">
+        <h2>Book a visit</h2>
+        <p style="margin-top:16px;opacity:.9">Planning a corner, patio, or full refresh? Pick a time. Tell us what you are working with. We show up prepared.</p>
+      </div>
+      <form class="reveal" action="#" method="post" aria-label="Booking form">
+        <label>Name<input type="text" name="name" autocomplete="name" required></label>
+        <label>Date<input type="date" name="date" required></label>
+        <label>What do you need?<textarea name="brief" placeholder="Tools, planters, gift, full quote…" required></textarea></label>
+        <button class="btn" type="submit">Request booking</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="cta-final" id="enquire">
+    <div class="reveal">
+      <h2>Get a quote.</h2>
+      <p>One piece or a full set — send an enquiry and we will reply with options from the catalogue. No runaround.</p>
+      <a class="btn" href="#book">Send enquiry →</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© gg</p>
+    <nav aria-label="Footer">
+      <a href="#shop">Shop</a>
+      <a href="#story">Story</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#book">Book</a>
+    </nav>
+    <p style="text-align:right">Bold local goods</p>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
