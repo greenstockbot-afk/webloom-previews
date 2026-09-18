@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Green Edge Lawns — Website Concepts | WeBloom</title>
+  <meta name="description" content="Four website design concepts for Green Edge Lawns Ltd, prepared by WeBloom. Choose a look to preview.">
+  <link rel="icon" href="assets/logo.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Libre+Baskerville:wght@400;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* WeBloom studio chrome */
+      --wb-cream: #F4F1EA;
+      --wb-ink: #1C1B18;
+      --wb-olive: #4A5240;
+      --wb-bronze: #9A7B5A;
+      --wb-mute: #6B6560;
+      --wb-rule: #DDD6CB;
+      --wb-white: #FDFCFA;
+
+      /* Green Edge concept cards */
+      --forest: #1B3B2F;
+      --forest-light: #2A5242;
+      --lime: #8BC34A;
+      --terra: #C45D2C;
+      --ge-paper: #FAFAF7;
+      --ge-white: #FFFFFF;
+      --ge-rule: #D4DDD6;
+      --ge-mute: #5A6B60;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100%;
+      overflow-x: hidden;
+      background: var(--wb-cream);
+      color: var(--wb-ink);
+      font-family: "Public Sans", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* —— WeBloom chrome —— */
+    .studio-bar {
+      border-bottom: 1px solid var(--wb-rule);
+      background: var(--wb-white);
+      padding: 16px max(20px, env(safe-area-inset-right)) 16px max(20px, env(safe-area-inset-left));
+    }
+
+    .studio-bar__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .studio-wordmark {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(20px, 4.5vw, 24px);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--wb-ink);
+      line-height: 1.2;
+    }
+
+    .studio-wordmark span {
+      color: var(--wb-bronze);
+      font-weight: 500;
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+
+    .studio-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--wb-olive);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px max(20px, env(safe-area-inset-right)) 40px max(20px, env(safe-area-inset-left));
+      width: 100%;
+    }
+
+    .delivery-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--wb-bronze);
+      margin-bottom: 28px;
+    }
+
+    .client-header {
+      text-align: center;
+      margin-bottom: 44px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--wb-rule);
+    }
+
+    .client-logo {
+      width: 80px;
+      height: auto;
+      margin: 0 auto 18px;
+      display: block;
+    }
+
+    .client-header h1 {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: clamp(1.375rem, 4.5vw, 1.875rem);
+      font-weight: 700;
+      color: var(--forest);
+      letter-spacing: 0.01em;
+      margin-bottom: 14px;
+      line-height: 1.25;
+      overflow-wrap: break-word;
+    }
+
+    .intro {
+      max-width: 36rem;
+      margin: 0 auto;
+      font-size: clamp(0.9375rem, 2.5vw, 1rem);
+      line-height: 1.7;
+      color: var(--wb-mute);
+      overflow-wrap: break-word;
+    }
+
+    .intro strong { color: var(--wb-ink); font-weight: 600; }
+
+    .intro-hint {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--wb-olive);
+    }
+
+    /* —— Green Edge concept cards —— */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--ge-white);
+      border: 1px solid var(--ge-rule);
+      border-top: 4px solid var(--forest);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      overflow: hidden;
+      min-width: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (hover: hover) {
+      .card:hover {
+        border-top-color: var(--terra);
+        box-shadow: 0 8px 32px rgba(27, 59, 47, 0.1);
+        transform: translateY(-3px);
+      }
+    }
+
+    .card:active {
+      transform: scale(0.99);
+    }
+
+    .card--approved {
+      border-color: var(--lime);
+      border-top-color: var(--lime);
+      background: linear-gradient(180deg, rgba(139, 195, 74, 0.08) 0%, var(--ge-white) 40%);
+      box-shadow: 0 4px 24px rgba(139, 195, 74, 0.15);
+    }
+
+    @media (hover: hover) {
+      .card--approved:hover {
+        border-color: var(--lime);
+        border-top-color: var(--lime);
+        box-shadow: 0 10px 36px rgba(139, 195, 74, 0.22);
+      }
+    }
+
+    .card--approved .card-label {
+      color: var(--forest);
+      background: var(--lime);
+      display: inline-block;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+
+    .card--approved .card-link {
+      background: var(--lime);
+      color: var(--forest);
+    }
+
+    @media (hover: hover) {
+      .card--approved:hover .card-link {
+        background: var(--forest);
+        color: var(--ge-white);
+      }
+    }
+
+    .card-body {
+      padding: 24px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-size: clamp(1.125rem, 3vw, 1.25rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--forest);
+      margin-bottom: 10px;
+      overflow-wrap: break-word;
+    }
+
+    .card p {
+      font-size: clamp(0.875rem, 2.2vw, 0.9375rem);
+      line-height: 1.6;
+      color: var(--ge-mute);
+      flex: 1;
+      margin-bottom: 0;
+      overflow-wrap: break-word;
+    }
+
+    .card-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 48px;
+      padding: 14px 20px;
+      background: var(--forest);
+      color: var(--ge-white);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    @media (hover: hover) {
+      .card:hover .card-link { background: var(--terra); }
+    }
+
+    .card-link svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* —— WeBloom footer —— */
+    .studio-footer {
+      margin-top: 48px;
+      padding: 28px max(20px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+      border-top: 1px solid var(--wb-rule);
+      background: var(--wb-white);
+    }
+
+    .studio-footer__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .studio-footer__brand {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--wb-ink);
+      margin-bottom: 4px;
+    }
+
+    .studio-footer__legal {
+      font-size: 12px;
+      color: var(--wb-mute);
+      line-height: 1.5;
+    }
+
+    .studio-footer__contact {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--wb-mute);
+    }
+
+    .studio-footer__contact a {
+      display: inline-block;
+      color: var(--wb-olive);
+      font-weight: 500;
+      min-height: 44px;
+      line-height: 44px;
+      padding: 0 2px;
+      transition: color 0.15s;
+    }
+
+    .studio-footer__contact a[href^="mailto"] {
+      line-height: 1.5;
+      min-height: auto;
+      padding: 8px 2px;
+    }
+
+    .studio-footer__contact a:hover { color: var(--wb-bronze); }
+
+    .studio-footer__hours {
+      font-size: 12px;
+      color: var(--wb-mute);
+      margin-top: 0;
+    }
+
+    /* Phone: 1 column (default) */
+    @media (max-width: 639px) {
+      .studio-bar__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .client-header {
+        margin-bottom: 32px;
+        padding-bottom: 28px;
+      }
+
+      .delivery-label {
+        margin-bottom: 20px;
+      }
+    }
+
+    /* Tablet: 2 columns */
+    @media (min-width: 640px) {
+      .page { padding-top: 40px; }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .card-body { padding: 28px 24px 24px; }
+
+      .card-link { padding: 14px 24px; }
+
+      .studio-footer__inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 24px 40px;
+      }
+
+      .studio-footer__contact a {
+        min-height: auto;
+        line-height: 1.75;
+      }
+    }
+
+    /* Desktop: 2×2 grid */
+    @media (min-width: 1024px) {
+      .page { padding-top: 48px; }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .client-header { margin-bottom: 44px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="studio-bar">
+    <div class="studio-bar__inner">
+      <p class="studio-wordmark">We<span>Bloom</span></p>
+      <p class="studio-tag">Concept delivery</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <p class="delivery-label">Prepared for Green Edge Lawns Ltd</p>
+
+    <header class="client-header">
+      <img class="client-logo" src="assets/logo.jpg" alt="Green Edge Lawns Ltd" width="80" height="80">
+      <h1>Hi Byron — pick a look</h1>
+      <p class="intro">
+        WeBloom has prepared <strong>three visual directions</strong> for Green Edge Lawns,
+        plus the <strong>approved Replit design</strong> from your Vite build.
+        Open each preview in a new tab and compare side by side — then let us know your favourite.
+        <span class="intro-hint">Each link opens in a new tab so you won't lose this page.</span>
+      </p>
+    </header>
+
+    <div class="cards">
+      <a class="card" href="look-a/index.html" target="_blank" rel="noopener noreferrer">
+        <div class="card-body">
+          <p class="card-label">Concept A</p>
+          <h2>Editorial Luxury</h2>
+          <p>Refined and minimal — generous whitespace, classic serif typography, restrained forest greens. Premium without feeling fussy.</p>
+        </div>
+        <span class="card-link">
+          View Concept A
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 20 4"/></svg>
+        </span>
+      </a>
+
+      <a class="card" href="look-b/index.html" target="_blank" rel="noopener noreferrer">
+        <div class="card-body">
+          <p class="card-label">Concept B</p>
+          <h2>Cinematic Premium</h2>
+          <p>Dark, immersive hero with dramatic lawn imagery. Layered sections and tonal greens — bold atmosphere, still professional.</p>
+        </div>
+        <span class="card-link">
+          View Concept B
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 20 4"/></svg>
+        </span>
+      </a>
+
+      <a class="card" href="look-c/index.html" target="_blank" rel="noopener noreferrer">
+        <div class="card-body">
+          <p class="card-label">Concept C</p>
+          <h2>Contemporary Bold</h2>
+          <p>Expressive headlines, lime and terracotta accents, asymmetric grid. Tradie energy — sharp, local, and hardworking.</p>
+        </div>
+        <span class="card-link">
+          View Concept C
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 20 4"/></svg>
+        </span>
+      </a>
+
+      <a class="card card--approved" href="look-d/index.html" target="_blank" rel="noopener noreferrer">
+        <div class="card-body">
+          <p class="card-label">Approved · Replit build</p>
+          <h2>Replit Design</h2>
+          <p>Your approved Vite/Replit site — the production-ready direction. Full interactive layout, real copy, and brand assets as built in Replit.</p>
+        </div>
+        <span class="card-link">
+          View Approved Design
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 20 4"/></svg>
+        </span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="studio-footer">
+    <div class="studio-footer__inner">
+      <div>
+        <p class="studio-footer__brand">WeBloom</p>
+        <p class="studio-footer__legal">Guillaume Chabbert trading as WeBloom<br>Auckland, New Zealand</p>
+      </div>
+      <div class="studio-footer__contact">
+        <a href="mailto:hello@webloom.co.nz">hello@webloom.co.nz</a><br>
+        <a href="https://webloom.co.nz" target="_blank" rel="noopener noreferrer">webloom.co.nz</a>
+        <p class="studio-footer__hours">Mon–Fri, 9am–5pm NZT</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
