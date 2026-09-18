@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GREEN EDGE LAWNS — Auckland. We'll Keep It Sharp.</title>
+  <meta name="description" content="Bold lawn mowing and garden maintenance across Auckland. Seven services, one sharp crew. Request a quote or call 021 081 67220.">
+  <meta property="og:title" content="GREEN EDGE LAWNS — Auckland Lawn Care">
+  <meta property="og:description" content="Reliable mowing, edging, and maintenance from Riverhead to Drury. Request a quote.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/logo.jpg">
+  <link rel="icon" href="../assets/logo.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1B3B2F;
+      --forest-dark: #142820;
+      --lime: #8BC34A;
+      --lime-bright: #A4D65E;
+      --terra: #C45D2C;
+      --terra-bright: #E07040;
+      --paper: #F4F6F3;
+      --white: #FFFFFF;
+      --char: #1A1A18;
+      --mute: #5A6B60;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    html, body { background: var(--paper); color: var(--char); }
+    body {
+      font-family: "Public Sans", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+    button, input, select, textarea { font: inherit; border-radius: 0; }
+
+    /* Bold mast */
+    .mast {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: stretch;
+      border-bottom: 3px solid var(--forest);
+      background: var(--lime);
+    }
+    .mast-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 24px;
+      border-right: 3px solid var(--forest);
+      background: var(--white);
+    }
+    .mast-logo img { width: 48px; height: auto; }
+    .mast-title {
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      color: var(--forest);
+    }
+    .mast-title span {
+      display: block;
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--terra);
+      letter-spacing: 0.08em;
+    }
+    nav {
+      display: flex;
+      align-items: stretch;
+    }
+    nav a {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      height: 68px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-right: 3px solid var(--forest);
+      transition: background 0.15s, color 0.15s;
+    }
+    nav a:hover { background: var(--forest); color: var(--lime); }
+    .mast-cta {
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      background: var(--terra);
+      color: var(--white);
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .mast-cta:hover { background: var(--forest); }
+
+    /* Hero asymmetric */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      min-height: 85vh;
+      border-bottom: 3px solid var(--forest);
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 48px 64px 56px;
+      background: var(--white);
+      position: relative;
+    }
+    .hero-left::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 56px;
+      width: 80px;
+      height: 6px;
+      background: var(--terra);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--forest);
+      color: var(--lime);
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+    h1 {
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 700;
+      font-size: clamp(36px, 5.5vw, 72px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 24px;
+    }
+    h1 .lime { color: var(--lime); background: var(--forest); padding: 0 8px; display: inline-block; }
+    h1 .terra { color: var(--terra); }
+    .hero-p {
+      font-size: 17px;
+      color: var(--mute);
+      max-width: 440px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      padding: 0 28px;
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 3px solid var(--forest);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-fill {
+      background: var(--forest);
+      color: var(--lime);
+    }
+    .btn-fill:hover { background: var(--terra); border-color: var(--terra); color: var(--white); }
+    .btn-line {
+      background: var(--white);
+      color: var(--forest);
+    }
+    .btn-line:hover { background: var(--lime); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--forest);
+    }
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      object-fit: cover;
+      mix-blend-mode: luminosity;
+      opacity: 0.85;
+    }
+    .hero-stat {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 3px solid var(--lime);
+    }
+    .hero-stat div {
+      padding: 20px 16px;
+      background: var(--forest);
+      color: var(--white);
+      text-align: center;
+      border-right: 2px solid rgba(139,195,74,0.3);
+    }
+    .hero-stat div:last-child { border-right: none; }
+    .hero-stat strong {
+      display: block;
+      font-family: "Lexend Mega", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--lime);
+      margin-bottom: 4px;
+    }
+    .hero-stat span {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    /* Trust bar */
+    .trust-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: var(--terra);
+      color: var(--white);
+      border-bottom: 3px solid var(--forest);
+    }
+    .trust-bar div {
+      padding: 18px 16px;
+      text-align: center;
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-right: 2px solid rgba(255,255,255,0.2);
+    }
+    .trust-bar div:last-child { border-right: none; }
+
+    /* Section */
+    .section {
+      padding: 80px 56px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .section-tag {
+      font-family: "Lexend Mega", sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--forest);
+      line-height: 1;
+    }
+    .section-desc {
+      max-width: 400px;
+      color: var(--mute);
+      font-size: 15px;
+      text-align: right;
+    }
+
+    /* Services bento */
+    .services-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: minmax(140px, auto);
+      gap: 12px;
+    }
+    .svc {
+      padding: 28px 24px;
+      border: 3px solid var(--forest);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: background 0.15s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc:hover { background: var(--lime); transform: translateY(-2px); }
+    .svc-num {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-family: "Lexend Mega", sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--forest);
+      opacity: 0.12;
+      line-height: 1;
+    }
+    .svc h3 {
+      font-family: "Lexend Mega", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--forest);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .svc p { font-size: 13px; color: var(--mute); line-height: 1.5; }
+    .svc:nth-child(1) { grid-column: span 5; grid-row: span 2; background: var(--forest); }
+    .svc:nth-child(1) h3, .svc:nth-child(1) p { color: var(--white); }
+    .svc:nth-child(1) p { opacity: 0.75; }
+    .svc:nth-child(1) .svc-num { color: var(--lime); opacity: 0.3; }
+    .svc:nth-child(1):hover { background: var(--forest-dark); }
+    .svc:nth-child(2) { grid-column: span 4; }
+    .svc:nth-child(3) { grid-column: span 3; background: var(--terra); border-color: var(--terra); }
+    .svc:nth-child(3) h3, .svc:nth-child(3) p { color: var(--white); }
+    .svc:nth-child(3) p { opacity: 0.85; }
+    .svc:nth-child(3) .svc-num { color: var(--white); opacity: 0.2; }
+    .svc:nth-child(3):hover { background: var(--terra-bright); }
+    .svc:nth-child(4) { grid-column: span 3; }
+    .svc:nth-child(5) { grid-column: span 4; }
+    .svc:nth-child(6) { grid-column: span 3; }
+    .svc:nth-child(7) { grid-column: span 5; background: var(--lime); }
+    .svc:nth-child(7):hover { background: var(--lime-bright); }
+
+    /* Area split */
+    .area-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 3px solid var(--forest);
+      background: var(--white);
+    }
+    .area-map {
+      padding: 56px 48px;
+      background: var(--forest);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .area-map h2 { color: var(--lime); margin-bottom: 16px; }
+    .area-map p { color: rgba(255,255,255,0.75); font-size: 15px; margin-bottom: 24px; }
+    .area-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      padding: 8px 14px;
+      background: rgba(139,195,74,0.15);
+      border: 2px solid var(--lime);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--lime);
+    }
+    .area-visual {
+      position: relative;
+      min-height: 400px;
+    }
+    .area-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+    .area-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: var(--terra);
+      color: var(--white);
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 12px 18px;
+      border: 3px solid var(--forest);
+    }
+
+    /* Story offset */
+    .story-offset {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 0;
+      margin-top: 80px;
+    }
+    .story-img-wrap {
+      position: relative;
+      margin-top: 48px;
+    }
+    .story-img-wrap img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border: 3px solid var(--forest);
+    }
+    .story-img-wrap::before {
+      content: "";
+      position: absolute;
+      top: -24px;
+      left: -24px;
+      width: 100%;
+      height: 100%;
+      background: var(--lime);
+      z-index: -1;
+      border: 3px solid var(--forest);
+    }
+    .story-copy {
+      padding: 48px 56px 48px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .story-copy p { color: var(--mute); margin-bottom: 16px; font-size: 15px; }
+    .story-name {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: var(--forest);
+      color: var(--lime);
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    /* Gallery mosaic */
+    .gallery-mosaic {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 200px 200px;
+      gap: 8px;
+    }
+    .g-item {
+      overflow: hidden;
+      border: 3px solid var(--forest);
+      position: relative;
+    }
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .g-item:hover img { transform: scale(1.08); }
+    .g-item:nth-child(1) { grid-column: span 3; grid-row: span 2; }
+    .g-item:nth-child(2) { grid-column: span 2; }
+    .g-item:nth-child(3) { grid-column: span 1; }
+    .g-item:nth-child(4) { grid-column: span 2; }
+    .g-item:nth-child(5) { grid-column: span 2; }
+    .g-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 12px;
+      background: var(--forest);
+      color: var(--lime);
+      font-family: "Lexend Mega", sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .gallery-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--mute);
+      font-style: italic;
+    }
+
+    /* Quote block */
+    .quote-block {
+      margin: 80px 0 0;
+      border: 3px solid var(--forest);
+      background: var(--lime);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+    }
+    .quote-left {
+      padding: 56px 48px;
+      background: var(--forest);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .quote-left h2 { color: var(--lime); margin-bottom: 16px; }
+    .quote-left p { opacity: 0.8; margin-bottom: 32px; font-size: 15px; }
+    .quote-contacts a {
+      display: block;
+      font-family: "Lexend Mega", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--white);
+      margin-bottom: 12px;
+      transition: color 0.15s;
+    }
+    .quote-contacts a:hover { color: var(--terra-bright); }
+    .quote-form-wrap {
+      padding: 48px;
+      background: var(--white);
+    }
+    .quote-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .quote-form .full { grid-column: span 2; }
+    .quote-form label {
+      display: block;
+      font-family: "Lexend Mega", sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 4px;
+    }
+    .quote-form input,
+    .quote-form select,
+    .quote-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid var(--forest);
+      background: var(--paper);
+      color: var(--char);
+    }
+    .quote-form input:focus,
+    .quote-form select:focus,
+    .quote-form textarea:focus {
+      outline: none;
+      border-color: var(--terra);
+      background: var(--white);
+    }
+    .quote-form textarea { min-height: 90px; resize: vertical; }
+
+    /* Footer */
+    footer {
+      background: var(--forest);
+      color: rgba(255,255,255,0.7);
+      border-top: 6px solid var(--terra);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 48px;
+      padding: 48px 56px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .footer-brand img { width: 56px; margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; line-height: 1.6; }
+    .footer-col h4 {
+      font-family: "Lexend Mega", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 12px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 8px;
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: var(--lime); }
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 16px 56px;
+      border-top: 2px solid rgba(255,255,255,0.1);
+      font-size: 11px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .mast { grid-template-columns: 1fr auto; }
+      nav { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .trust-bar { grid-template-columns: repeat(3, 1fr); }
+      .services-bento { grid-template-columns: 1fr 1fr; }
+      .svc { grid-column: span 1 !important; grid-row: span 1 !important; }
+      .area-split { grid-template-columns: 1fr; }
+      .story-offset { grid-template-columns: 1fr; }
+      .story-img-wrap { margin-top: 0; max-width: 400px; }
+      .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .g-item { grid-column: span 1 !important; grid-row: span 1 !important; min-height: 180px; }
+      .g-item:nth-child(1) { grid-column: span 2 !important; min-height: 240px; }
+      .quote-block { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 56px 20px; }
+      .hero-left { padding: 40px 24px; }
+      .trust-bar { grid-template-columns: 1fr 1fr; }
+      .services-bento { grid-template-columns: 1fr; }
+      .quote-form { grid-template-columns: 1fr; }
+      .quote-form .full { grid-column: span 1; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .section-desc { text-align: left; }
+      .hero-stat { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="mast">
+    <a href="#" class="mast-logo">
+      <img src="../assets/logo.jpg" alt="Green Edge Lawns Ltd" width="48">
+      <div class="mast-title">Green Edge<span>Lawns Ltd</span></div>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#area">Area</a>
+      <a href="#story">About</a>
+      <a href="#work">Work</a>
+      <a href="#quote">Quote</a>
+    </nav>
+    <a href="tel:+642108167220" class="mast-cta">021 081 67220</a>
+  </header>
+
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-left">
+      <span class="hero-tag">Auckland Lawn Care</span>
+      <h1>We Keep<br>It <span class="lime">Sharp</span><br><span class="terra">Every Visit</span></h1>
+      <p class="hero-p">Green Edge Lawns Ltd — mowing, edging, and garden maintenance for Auckland homes and commercial properties. Based in Sunnyhills, covering Riverhead to Drury.</p>
+      <div class="hero-btns">
+        <a href="#quote" class="btn btn-fill">Request a Quote</a>
+        <a href="tel:+642108167220" class="btn btn-line">Call Now</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1000&q=80" alt="Freshly maintained Auckland lawn" width="1000" height="800">
+      <div class="hero-stat">
+        <div><strong>7</strong><span>Services</span></div>
+        <div><strong>AKL</strong><span>Wide Coverage</span></div>
+        <div><strong>100%</strong><span>Local Crew</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-bar" role="region" aria-label="Trust signals">
+    <div>Residential</div>
+    <div>Commercial</div>
+    <div>Insured</div>
+    <div>NZBN Registered</div>
+    <div>Sunnyhills Based</div>
+  </div>
+
+  <section class="section" id="services">
+    <div class="section-head">
+      <div>
+        <p class="section-tag">What we do</p>
+        <h2>Seven Services.<br>One Sharp Crew.</h2>
+      </div>
+      <p class="section-desc">From weekly residential mows to commercial berms — we handle the lot. No landscape-design fluff, just tidy grounds.</p>
+    </div>
+    <div class="services-bento">
+      <article class="svc">
+        <span class="svc-num">01</span>
+        <h3>Lawn Mowing & Maintenance</h3>
+        <p>Regular schedules that keep your lawn healthy, even, and kerb-ready all year. Weekly, fortnightly, or one-off.</p>
+      </article>
+      <article class="svc">
+        <span class="svc-num">02</span>
+        <h3>Commercial & Large Properties & Berms</h3>
+        <p>Ride-on and walk-behind for commercial sites, body corporates, and council berms.</p>
+      </article>
+      <article class="svc">
+        <span class="svc-num">03</span>
+        <h3>Edging & Trimming</h3>
+        <p>Crisp edges along paths and driveways. Line trimming around every obstacle.</p>
+      </article>
+      <article class="svc">
+        <span class="svc-num">04</span>
+        <h3>Weed Control</h3>
+        <p>Targeted treatment to keep lawns and beds clear.</p>
+      </article>
+      <article class="svc">
+        <span class="svc-num">05</span>
+        <h3>Property Clean Ups</h3>
+        <p>Overgrown sections, rental turnovers, pre-sale presentation.</p>
+      </article>
+      <article class="svc">
+        <span class="svc-num">06</span>
+        <h3>Hedge & Branch Pruning</h3>
+        <p>Neat hedges and safe, trimmed branches.</p>
+      </article>
+      <article class="svc">
+        <span class="svc-num">07</span>
+        <h3>Basic Landscaping</h3>
+        <p>Bed refreshes, mulching, and simple planting to finish the job.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="area" style="padding-top: 0;">
+    <div class="area-split">
+      <div class="area-map">
+        <p class="section-tag" style="color: var(--terra-bright);">Service Area</p>
+        <h2>Riverhead<br>to Drury</h2>
+        <p>Auckland-wide coverage from our Sunnyhills base. North-west through to south — we come to you.</p>
+        <div class="area-chips">
+          <span class="chip">Sunnyhills</span>
+          <span class="chip">Pakuranga</span>
+          <span class="chip">Howick</span>
+          <span class="chip">Manukau</span>
+          <span class="chip">Drury</span>
+          <span class="chip">North Shore</span>
+          <span class="chip">West Auckland</span>
+          <span class="chip">Riverhead</span>
+        </div>
+      </div>
+      <div class="area-visual">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80" alt="Well-maintained property grounds" width="900" height="600" loading="lazy">
+        <span class="area-badge">Auckland Wide</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="story">
+    <div class="story-offset">
+      <div class="story-img-wrap">
+        <img src="https://images.unsplash.com/photo-1592417817098-8f771e994699?w=700&q=80" alt="Green Edge crew at work" width="700" height="700" loading="lazy">
+      </div>
+      <div class="story-copy">
+        <p class="section-tag">About us</p>
+        <h2>Reliable.<br>Local.<br>Hardworking.</h2>
+        <p style="margin-top: 20px;">Green Edge Lawns Ltd is an Auckland mowing and maintenance contractor — not a landscape studio. We show up on time, do the work properly, and leave every property looking sharper than we found it.</p>
+        <p>Led by Byron Vaun Symons, we work with homeowners who want their weekends back and property managers who need dependable grounds care across multiple sites.</p>
+        <p>Sharp lawns. Tidy edges. Fair pricing. That is the Green Edge standard.</p>
+        <div class="story-name">Byron Vaun Symons · Director</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="section-head">
+      <div>
+        <p class="section-tag">Gallery</p>
+        <h2>On The Job</h2>
+      </div>
+      <p class="section-desc">Stock photography placeholders — real job photos coming soon.</p>
+    </div>
+    <div class="gallery-mosaic">
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1592150625344-3139aa4d5a9a?w=900&q=80" alt="Striped lawn after mowing" loading="lazy">
+        <span class="g-label">Residential Mow</span>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80" alt="Lawn edging detail" loading="lazy">
+        <span class="g-label">Edging</span>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80" alt="Hedge pruning" loading="lazy">
+        <span class="g-label">Hedges</span>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cd2a?w=600&q=80" alt="Garden clean up" loading="lazy">
+        <span class="g-label">Clean Up</span>
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Commercial property" loading="lazy">
+        <span class="g-label">Commercial</span>
+      </div>
+    </div>
+    <p class="gallery-note">All images are Unsplash stock — representative of service quality, not actual Green Edge job sites.</p>
+  </section>
+
+  <section class="section" id="quote" style="padding-bottom: 0;">
+    <div class="quote-block">
+      <div class="quote-left">
+        <p class="section-tag" style="color: var(--terra-bright);">Get Started</p>
+        <h2>Request<br>a Quote</h2>
+        <p>Tell us about your property. No obligation — we will get back to you with a clear price.</p>
+        <div class="quote-contacts">
+          <a href="tel:+642108167220">021 081 67220</a>
+          <a href="mailto:byron@greenedgelawns.co.nz">byron@greenedgelawns.co.nz</a>
+          <a href="https://www.facebook.com/profile.php?id=61592732573717" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <div class="quote-form-wrap">
+        <form class="quote-form" action="mailto:byron@greenedgelawns.co.nz" method="post" enctype="text/plain">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div>
+            <label for="suburb">Suburb</label>
+            <input type="text" id="suburb" name="suburb" required>
+          </div>
+          <div class="full">
+            <label for="service">Service</label>
+            <select id="service" name="service">
+              <option>Lawn Mowing & Maintenance</option>
+              <option>Commercial & Large Properties</option>
+              <option>Edging & Trimming</option>
+              <option>Weed Control</option>
+              <option>Property Clean Up</option>
+              <option>Hedge & Branch Pruning</option>
+              <option>Basic Landscaping</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="msg">Property details</label>
+            <textarea id="msg" name="message" placeholder="Lawn size, access, how often…"></textarea>
+          </div>
+          <div class="full">
+            <button type="submit" class="btn btn-fill" style="width: 100%;">Send Enquiry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../assets/logo.jpg" alt="Green Edge Lawns Ltd" width="56">
+        <p>Professional lawn mowing and garden maintenance across Auckland. NZBN 9429053748928.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+642108167220">021 081 67220</a>
+        <a href="mailto:byron@greenedgelawns.co.nz">byron@greenedgelawns.co.nz</a>
+        <a href="https://greenedgelawns.co.nz">greenedgelawns.co.nz</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <a href="https://www.facebook.com/profile.php?id=61592732573717" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <span>&copy; 2026 Green Edge Lawns Ltd · Byron Vaun Symons</span>
+      <span>Concept C — Contemporary Bold</span>
+    </div>
+  </footer>
+
+</body>
+</html>
