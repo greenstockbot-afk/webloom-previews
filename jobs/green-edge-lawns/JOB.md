@@ -27,6 +27,12 @@
 
 ### Hosted preview URLs (raw.githack)
 
+**Shareable chooser (send this link to Byron):**
+```
+https://raw.githack.com/greenstockbot-afk/webloom-previews/cursor/green-edge-lawns-80ba/jobs/green-edge-lawns/index.html
+```
+
+Individual concepts:
 ```
 https://raw.githack.com/greenstockbot-afk/webloom-previews/cursor/green-edge-lawns-80ba/jobs/green-edge-lawns/look-a/index.html
 https://raw.githack.com/greenstockbot-afk/webloom-previews/cursor/green-edge-lawns-80ba/jobs/green-edge-lawns/look-b/index.html
